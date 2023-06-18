@@ -22,7 +22,10 @@ const SingleProjectPage: NextPage = () => {
 
   return (
     <div className="w-full">
-      <Hero project={project} />
+      <Hero
+        name={project?.name as string}
+        description={project?.description as string}
+      />
       <div className="flex flex-row">
         <SprintMenu />
         <TodoContainer />

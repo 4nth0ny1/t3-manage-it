@@ -1,11 +1,9 @@
-import type { Project } from "../types";
-
 type ProjectProps = {
-  project: Project;
+  name: string;
+  description: string;
 };
 
-export function Hero({ project }: ProjectProps) {
-  const { name, description } = project;
+export function Hero({ name, description }: ProjectProps) {
   return (
     <div className="hero bg-base-200">
       <div className="hero-content text-center">

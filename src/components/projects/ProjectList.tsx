@@ -1,5 +1,6 @@
 import { api } from "../../utils/api";
 import { ProjectItem } from "./ProjectItem";
+import { CreateProject } from "./CreateProject";
 
 export function ProjectList() {
   const {
@@ -14,6 +15,7 @@ export function ProjectList() {
   return (
     <div>
       <h2 className="pb-4 text-center text-3xl">Topics</h2>
+      <CreateProject />
       <div className="flex flex-row flex-wrap">
         {projects?.map((project) => {
           return <ProjectItem key={project.id} project={project} />;

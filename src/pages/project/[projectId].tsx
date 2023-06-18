@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { api } from "../../utils/api";
 import { type NextPage } from "next";
-import Link from "next/link";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();

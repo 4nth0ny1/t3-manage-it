@@ -20,6 +20,22 @@ export const projectRouter = createTRPCRouter({
         id: input.projectId
       }
     })
+  }), 
+
+  createProject: protectedProcedure
+  .input(z.object({name: z.string(), description: z.string()}))
+  .mutation(async ({ctx, input}) => {
+    return await ctx.prisma.project.create({
+      data: {
+        name: input.name,
+        description: input.description,
+        user: {
+          connect: {
+            id: ctx.session.user.id
+          }
+        }
+      }
+    })
   })
 
 });

@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { api } from "~/utils/api";
+import { ProjectList } from "../components/projects/ProjectList";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -24,6 +25,7 @@ export default function Home() {
             <AuthShowcase />
           </div>
         </div>
+        <ProjectList />
       </main>
     </>
   );

@@ -40,4 +40,14 @@ export const sprintRouter = createTRPCRouter({
       }
     })
   }), 
+
+  deleteSprint: protectedProcedure
+  .input(z.string())
+  .mutation(({ctx, input}) => {
+    return ctx.prisma.sprint.delete({
+      where: {
+        id: input
+      }
+    })
+  })
 });

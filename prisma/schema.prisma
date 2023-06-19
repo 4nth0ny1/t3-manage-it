@@ -57,6 +57,7 @@ model User {
     sessions      Session[]
     projects      Project[]
     sprints       Sprint[]
+    todos         Todo[]
 }
 
 model VerificationToken {
@@ -76,6 +77,7 @@ model Project {
     user        User     @relation(fields: [userId], references: [id])
     userId      String
     sprints     Sprint[]
+    todos       Todo[]
 
     @@index([userId])
 }
@@ -90,7 +92,26 @@ model Sprint {
     userId      String
     project     Project  @relation(fields: [projectId], references: [id])
     projectId   String
+    todos       Todo[]
 
     @@index([userId])
     @@index([projectId])
+}
+
+model Todo {
+    id          String   @id @default(cuid())
+    name        String
+    description String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @default(now())
+    user        User     @relation(fields: [userId], references: [id])
+    userId      String
+    project     Project  @relation(fields: [projectId], references: [id])
+    projectId   String
+    sprint      Sprint   @relation(fields: [sprintId], references: [id])
+    sprintId    String
+
+    @@index([userId])
+    @@index([projectId])
+    @@index([sprintId])
 }

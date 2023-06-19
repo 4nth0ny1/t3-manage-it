@@ -50,9 +50,10 @@ import { SprintList } from "../components/sprints/SprintList";
 
 export function SprintMenu() {
   const [active, setActive] = useState(false);
-
+  // it's working
   return (
     <div className="border-right-200 min-h-screen w-1/5 bg-purple-200 p-4">
+      <h2 className="text-2xl">Sprints</h2>
       <SprintList />
       {/* <CreateSprint isActive={!active} onShow={() => setActive(!active)} /> */}
     </div>

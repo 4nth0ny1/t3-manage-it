@@ -14,6 +14,10 @@ export const getAllSprints = z.object({
     projectId: z.string().cuid()
   })
 
+export const getOneSprint = z.object({
+  sprintId: z.string().cuid()
+})
+
   type allTodosOutput = RouterOutputs['todo']['getAllTodos']
   export type Todo = allTodosOutput[number]
   

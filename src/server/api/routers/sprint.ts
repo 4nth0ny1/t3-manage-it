@@ -3,7 +3,7 @@ import {
   createTRPCRouter,
   protectedProcedure,
 } from "~/server/api/trpc";
-import {getAllSprints} from '../../../types'
+import {getAllSprints, getOneSprint} from '../../../types'
 
 export const sprintRouter = createTRPCRouter({
   getAllSprints: protectedProcedure
@@ -17,6 +17,16 @@ export const sprintRouter = createTRPCRouter({
       },
         orderBy: [{ createdAt: "desc" }],
     });
+  }),
+
+  getOneSprint: protectedProcedure
+  .input(getOneSprint)
+  .query(async({ctx, input}) => {
+    return await ctx.prisma.sprint.findUnique({
+      where: {
+        id: input.sprintId
+      }
+    })
   }),
 
   createSprint: protectedProcedure

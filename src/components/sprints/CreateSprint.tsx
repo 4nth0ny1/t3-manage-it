@@ -2,7 +2,11 @@ import { api } from "../../utils/api";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export function CreateSprint() {
+type CreateProps = {
+  resetCreating: () => void;
+};
+
+export function CreateSprint({ resetCreating }: CreateProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -16,6 +20,7 @@ export function CreateSprint() {
       await ctx.sprint.getAllSprints.invalidate();
       setName("");
       setDescription("");
+      resetCreating();
     },
   });
 

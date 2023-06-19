@@ -10,10 +10,12 @@ export function SprintMenu() {
     <div className="border-right-200 min-h-screen w-1/5 bg-purple-200 p-4">
       <h2 className="text-2xl">Sprints</h2>
       <SprintList />
-      {!creating ? (
-        <CreateSprint />
+      {creating ? (
+        <CreateSprint resetCreating={() => setCreating(!creating)} />
       ) : (
-        <GrAddCircle onClick={() => setCreating(!creating)} />
+        <div className="flex flex-row justify-end py-4">
+          <GrAddCircle onClick={() => setCreating(!creating)} />
+        </div>
       )}
     </div>
   );

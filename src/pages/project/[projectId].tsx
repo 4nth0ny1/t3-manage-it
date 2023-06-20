@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { api } from "../../utils/api";
 import { type NextPage } from "next";
 import { Hero } from "../../components/Hero";
@@ -7,7 +8,13 @@ import { TodoContainer } from "../../components/TodoContainer";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
-  const projectId = router.query.projectId as string;
+  const [projectId, setProjectId] = useState("");
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const projectId = router.query.projectId as string;
+    setProjectId(projectId);
+  }, [router.isReady, router.query]);
 
   const {
     data: project,

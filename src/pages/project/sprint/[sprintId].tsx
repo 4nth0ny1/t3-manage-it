@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import { api } from "../../../utils/api";
 import { type NextPage } from "next";
-import Link from "next/link";
+import { SprintMenu } from "~/components/SprintMenu";
+import { TodoContainer } from "~/components/TodoContainer";
+import { Hero } from "~/components/Hero";
 
 const SingleSprintPage: NextPage = () => {
   const router = useRouter();
@@ -17,18 +19,12 @@ const SingleSprintPage: NextPage = () => {
   if (isError) return <div>Something went wrong</div>;
 
   return (
-    <div className="flex w-full flex-col text-black">
-      <h1>Single Sprint Page</h1>
-      {/* <Link href={`/topic/${post?.topicId as string}`}>
-        <p className="px-8 py-2 text-right text-xl italic text-accent">back</p>
-      </Link>
-      <div className="flex flex-row justify-end">
-        <Hero post={post} />
-        <div className="mb-10 flex w-full flex-col justify-center">
-          <CreateComment topicId={post?.topicId as string} />
-        </div>
+    <div className="w-full">
+      <Hero name="hello there" description="yo yo sah" />
+      <div className="flex flex-row">
+        <SprintMenu />
+        <TodoContainer sprintId={sprintId} />
       </div>
-      <CommentList postId={postId} /> */}
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
-import { useRouter } from "next/router";
 
-export function TodoList() {
-  const router = useRouter();
-  const sprintId = router.query.sprintId as string;
+type SprintIdProps = {
+  sprintId: string;
+};
 
+export function TodoList({ sprintId }: SprintIdProps) {
   const {
     data: todos,
     isLoading,

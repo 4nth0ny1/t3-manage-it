@@ -8,7 +8,7 @@ import {
 import {getAllTodos} from '../../../types'
 
 export const todoRouter = createTRPCRouter({
-  getAllTodos: publicProcedure
+  getAllTodos: protectedProcedure
   .input(getAllTodos)
   .query(({ ctx, input }) => {
     return ctx.prisma.todo.findMany({

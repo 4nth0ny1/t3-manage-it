@@ -28,7 +28,7 @@ const SingleProjectPage: NextPage = () => {
       />
       <div className="flex flex-row">
         <SprintMenu />
-        <TodoContainer />
+        <h2>Choose a sprint</h2>
       </div>
     </div>
   );

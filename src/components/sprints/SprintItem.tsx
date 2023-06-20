@@ -21,7 +21,7 @@ export function SprintItem({ sprint }: SprintProps) {
   return (
     <li className="w-full border-b border-black">
       <div className="flex flex-row justify-between">
-        <Link href={`/project/sprint/${id}`}>{name}</Link>
+        <p>{name}</p>
         <button onClick={() => deleteMutation(id)} className="text-error">
           <RiDeleteBin2Fill />
         </button>

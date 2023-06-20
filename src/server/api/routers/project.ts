@@ -18,7 +18,14 @@ export const projectRouter = createTRPCRouter({
     return await ctx.prisma.project.findUnique({
       where: {
         id: input.projectId
-      }
+      }, 
+      include: {
+        sprints: {
+          include: {
+            Todo: true
+          }
+        } 
+      }, 
     })
   }), 
 

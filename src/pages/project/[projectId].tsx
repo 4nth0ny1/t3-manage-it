@@ -4,7 +4,7 @@ import { api } from "../../utils/api";
 import { type NextPage } from "next";
 import { Hero } from "../../components/Hero";
 import { SprintMenu } from "../../components/SprintMenu";
-import { TodoContainer } from "../../components/TodoContainer";
+import { TodoList } from "../../components/todos/TodoList";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const SingleProjectPage: NextPage = () => {
       />
       <div className="flex flex-row">
         <SprintMenu />
-        <h2>Choose a sprint</h2>
+        <TodoList />
       </div>
     </div>
   );

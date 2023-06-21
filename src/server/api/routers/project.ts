@@ -19,13 +19,6 @@ export const projectRouter = createTRPCRouter({
       where: {
         id: input.projectId
       }, 
-      include: {
-        sprints: {
-          include: {
-            Todo: true
-          }
-        } 
-      }, 
     })
   }), 
 

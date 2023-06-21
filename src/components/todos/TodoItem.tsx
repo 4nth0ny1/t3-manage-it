@@ -4,13 +4,13 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
-type TodoProps = {
+type NewTodoProps = {
+  id: number;
   name: string;
   description: string;
 };
 
-export function TodoItem({ todo }: TodoProps) {
-  const { name, description } = todo;
+export function TodoItem({ id, name, description }: NewTodoProps) {
   const [showDescription, setShowDescription] = useState(false);
 
   return (

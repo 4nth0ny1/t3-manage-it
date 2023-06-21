@@ -16,7 +16,7 @@ export function SprintList({ onClick }) {
   if (isError) return <div>Something went wrong</div>;
 
   return (
-    <ul className="flex flex-row flex-wrap text-2xl">
+    <ul className="flex flex-col text-2xl">
       {sprints?.map((sprint) => {
         return (
           <button onClick={onClick} key={sprint.id}>

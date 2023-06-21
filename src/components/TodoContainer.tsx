@@ -6,8 +6,8 @@ type SprintIdProps = {
 
 export function TodoContainer({ sprintId }: SprintIdProps) {
   return (
-    <div className="border-right-200 min-h-screen w-4/5 bg-green-200">
-      TodoContainer
+    <div className="min-h-screen w-4/5 border-l-2 p-4">
+      <h2 className="text-2xl">TodoContainer</h2>
       <TodoList sprintId={sprintId} />
     </div>
   );

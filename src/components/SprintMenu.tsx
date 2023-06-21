@@ -7,7 +7,7 @@ export function SprintMenu({ onClick }) {
   const [creating, setCreating] = useState(false);
 
   return (
-    <div className="border-right-200 min-h-screen w-1/5 bg-purple-200 p-4">
+    <div className="border-right-200 min-h-screen w-1/5 border-black p-4">
       <h2 className="text-2xl">Sprints</h2>
 
       <SprintList onClick={onClick} />

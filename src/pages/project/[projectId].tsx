@@ -35,7 +35,7 @@ const SingleProjectPage: NextPage = () => {
       />
       <div className="flex flex-row">
         <SprintMenu />
-        <TodoContainer />
+        <TodoContainer projectId={projectId} />
       </div>
     </div>
   );

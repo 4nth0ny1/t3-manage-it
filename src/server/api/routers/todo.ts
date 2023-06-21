@@ -20,4 +20,16 @@ export const todoRouter = createTRPCRouter({
         orderBy: [{ createdAt: "desc" }],
     });
   }),
+
+  getAllTodosFromProject: protectedProcedure
+  .input(z.object({projectId: z.string()}))
+  .query(({ctx, input}) => {
+    return ctx.prisma.todo.findMany({
+      where: {
+        project: {
+          id: input.projectId
+        }
+      }
+    })
+  })
 })

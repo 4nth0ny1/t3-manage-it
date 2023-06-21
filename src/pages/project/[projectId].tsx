@@ -9,7 +9,6 @@ import { TodoContainer } from "../../components/TodoContainer";
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
-  const [target, setTarget] = useState("");
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -28,11 +27,6 @@ const SingleProjectPage: NextPage = () => {
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Something went wrong</div>;
 
-  function handleChange(e) {
-    console.log(e.target);
-    // setTarget(e.target);
-  }
-
   return (
     <div className="w-full">
       <Hero
@@ -40,8 +34,7 @@ const SingleProjectPage: NextPage = () => {
         description={project?.description as string}
       />
       <div className="flex flex-row">
-        <SprintMenu onClick={handleChange} />
-        {target}
+        <SprintMenu />
         <TodoContainer />
       </div>
     </div>

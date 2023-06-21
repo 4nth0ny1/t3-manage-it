@@ -1,15 +1,16 @@
-import type { Todo } from "../../types";
+import type { TodoProject } from "../../types";
 import { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 type TodoProps = {
-  todo: Todo;
+  todo: TodoProject;
 };
 
 export function TodoItem({ todo }: TodoProps) {
-  const { id, name, description } = todo;
+  const { id, name, description, sprintId } = todo;
+
   const [showDescription, setShowDescription] = useState(false);
 
   return (

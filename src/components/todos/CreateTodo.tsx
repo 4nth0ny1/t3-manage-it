@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 export function CreateTodo() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [selectValue, setSelectValue] = useState("");
 
   const ctx = api.useContext();
 
@@ -16,10 +17,13 @@ export function CreateTodo() {
       await ctx.todo.getAllTodos.invalidate();
       setName("");
       setDescription("");
+      setSelectValue("");
     },
   });
 
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
+
+  const sprintId = selectValue;
 
   return (
     <form
@@ -46,17 +50,22 @@ export function CreateTodo() {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <select className="select w-full max-w-xs border-slate-500">
+        <select
+          className="select w-full max-w-xs border-slate-500"
+          value={selectValue}
+          onChange={(e) => setSelectValue(e.target.value)}
+        >
           <option disabled selected>
             Pick Sprint
           </option>
           {sprints?.map((sprint) => {
-            return <option key={sprint.id}>{sprint.name}</option>;
+            return <option key={sprint.id}>{sprint.id}</option>;
           })}
         </select>
       </div>
       <div className=" flex flex-row justify-end">
         <button className="btn-accent btn w-[25%]">Create</button>
+        <p>{selectValue}</p>
       </div>
     </form>
   );

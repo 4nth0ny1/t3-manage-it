@@ -27,14 +27,13 @@ export function CreateTodo() {
 
   return (
     <div className="flex w-[700px] flex-col border-b  border-black pb-4">
-      <div className="flex flex-row justify-between">
+      <div
+        onClick={() => setShowForm(!showForm)}
+        className="flex flex-row justify-between"
+      >
         <h2>Create a Todo</h2>
         <div className="flex flex-col justify-center text-3xl">
-          {showForm ? (
-            <IoMdArrowDropdown onClick={() => setShowForm(!showForm)} />
-          ) : (
-            <IoMdArrowDropup onClick={() => setShowForm(!showForm)} />
-          )}
+          {showForm ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
         </div>
       </div>
       {showForm && (

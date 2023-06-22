@@ -14,7 +14,7 @@ export function ProjectList() {
 
   return (
     <div>
-      <h2 className="pb-4 text-center text-3xl">Topics</h2>
+      <h2 className="pb-4 text-center text-3xl">Projects</h2>
       <CreateProject />
       <div className="flex flex-row flex-wrap">
         {projects?.map((project) => {

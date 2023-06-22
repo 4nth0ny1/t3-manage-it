@@ -6,7 +6,7 @@ type SprintProps = {
   sprint: Sprint;
 };
 
-export function SprintItem({ sprint }: SprintProps) {
+export function SprintItem({ sprint }: SprintProps, { upClick }) {
   const { id, name } = sprint;
 
   const ctx = api.useContext();
@@ -20,7 +20,7 @@ export function SprintItem({ sprint }: SprintProps) {
   return (
     <li className="w-full border-b border-black">
       <div className="flex flex-row justify-between">
-        <p>{name}</p>
+        <p onClick={upClick}>{name}</p>
         <button onClick={() => deleteMutation(id)} className="text-error">
           <RiDeleteBin2Fill />
         </button>

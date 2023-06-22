@@ -39,7 +39,6 @@ const SingleProjectPage: NextPage = () => {
         description={project?.description as string}
       />
       <div className="flex flex-row">
-        Value: {value}
         <br></br>
         <br></br>
         <SprintMenu upClick={handleClick} />

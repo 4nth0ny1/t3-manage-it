@@ -19,8 +19,8 @@ export function SprintList({ upClick }) {
     <ul className="flex flex-col text-2xl">
       {sprints?.map((sprint) => {
         return (
-          <div key={sprint.id} onClick={upClick}>
-            <SprintItem sprint={sprint} />
+          <div key={sprint.id} upClick={upClick}>
+            <SprintItem sprint={sprint} upClick={upClick} />
           </div>
         );
       })}

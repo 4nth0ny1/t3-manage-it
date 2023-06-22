@@ -16,7 +16,7 @@ export function TodoItem({ todo }: TodoProps) {
 
   const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
     onSettled: async () => {
-      await ctx.todo.getAllTodos.invalidate();
+      await ctx.todo.getAllTodosFromProject.invalidate();
     },
   });
 

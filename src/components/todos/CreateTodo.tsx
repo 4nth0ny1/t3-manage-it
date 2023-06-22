@@ -8,7 +8,9 @@ export function CreateTodo() {
   const [description, setDescription] = useState("");
   const [selectValue, setSelectValue] = useState("");
   const [showForm, setShowForm] = useState(false);
+
   const sprintId = selectValue;
+
   const ctx = api.useContext();
 
   const router = useRouter();
@@ -16,7 +18,7 @@ export function CreateTodo() {
 
   const { mutate } = api.todo.createTodo.useMutation({
     onSettled: async () => {
-      await ctx.todo.getAllTodos.invalidate();
+      await ctx.todo.getAllTodosFromProject.invalidate();
       setName("");
       setDescription("");
       setSelectValue("");

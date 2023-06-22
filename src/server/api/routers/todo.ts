@@ -38,8 +38,8 @@ export const todoRouter = createTRPCRouter({
 
   createTodo: protectedProcedure
   .input(z.object({name: z.string(), description: z.string(), sprintId: z.string(), projectId: z.string()}))
-  .mutation(({ctx, input}) => {
-    return ctx.prisma.todo.create({
+  .mutation( async ({ctx, input}) => {
+    return await ctx.prisma.todo.create({
       data: {
         name: input.name,
         description: input.description,

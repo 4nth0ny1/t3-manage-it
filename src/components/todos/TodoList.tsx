@@ -31,7 +31,7 @@ export function TodoList({ sprintId, projectId }: ProjectIdProps) {
         ? filteredList?.map((todo) => {
             return <TodoItem key={todo.id} todo={todo} />;
           })
-        : "Create a List"}
+        : "Choose a Sprint"}
     </div>
   );
 }

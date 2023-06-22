@@ -20,7 +20,7 @@ export function TodoList({ projectId }: ProjectIdProps) {
 
   return (
     <ul className="flex flex-row flex-wrap text-2xl">
-      <div className="flex w-full flex-row justify-center p-4">
+      <div className="mb-6 flex w-full flex-row justify-center p-4">
         <CreateTodo />
       </div>
       {todosFromProject?.map((todo) => {

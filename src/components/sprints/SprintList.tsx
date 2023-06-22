@@ -2,7 +2,7 @@ import { api } from "../../utils/api";
 import { SprintItem } from "./SprintItem";
 import { useRouter } from "next/router";
 
-export function SprintList() {
+export function SprintList({ upLift }) {
   const router = useRouter();
   const projectId = router.query.projectId as string;
 
@@ -20,7 +20,7 @@ export function SprintList() {
       {sprints?.map((sprint) => {
         return (
           <div key={sprint.id}>
-            <SprintItem sprint={sprint} />
+            <SprintItem sprint={sprint} upLift={upLift} />
           </div>
         );
       })}

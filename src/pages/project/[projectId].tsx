@@ -9,6 +9,7 @@ import { TodoList } from "../../components/todos/TodoList";
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
+  const [sprintId, setSprintId] = useState("");
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -27,6 +28,10 @@ const SingleProjectPage: NextPage = () => {
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Something went wrong</div>;
 
+  const handleClick = (id: string) => {
+    setSprintId(id);
+  };
+
   return (
     <div className="w-full">
       <Hero
@@ -36,9 +41,10 @@ const SingleProjectPage: NextPage = () => {
       <div className="flex flex-row">
         <br></br>
         <br></br>
-        <SprintMenu />
+
+        <SprintMenu upLift={handleClick} />
         <div className="min-h-screen w-4/5 border-l-2 p-4">
-          <TodoList projectId={projectId} />
+          <TodoList projectId={projectId} sprintId={sprintId} />
         </div>
       </div>
     </div>

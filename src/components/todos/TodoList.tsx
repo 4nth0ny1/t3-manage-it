@@ -4,15 +4,20 @@ import { CreateTodo } from "../../components/todos/CreateTodo";
 
 type ProjectIdProps = {
   projectId: string;
+  sprintId: string;
 };
 
-export function TodoList({ projectId }: ProjectIdProps) {
+export function TodoList({ projectId, sprintId }: ProjectIdProps) {
   const {
     data: todosFromProject,
     isLoading,
     isError,
   } = api.todo.getAllTodosFromProject.useQuery({
     projectId,
+  });
+
+  const filteredList = todosFromProject.filter((todo) => {
+    return sprintId === todo.sprintId;
   });
 
   if (isLoading) return <div>Loading...</div>;

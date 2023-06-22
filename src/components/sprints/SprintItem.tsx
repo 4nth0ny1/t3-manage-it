@@ -1,14 +1,13 @@
 import { api } from "~/utils/api";
 import type { Sprint } from "../../types";
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import Link from "next/link";
 
 type SprintProps = {
   sprint: Sprint;
 };
 
 export function SprintItem({ sprint }: SprintProps) {
-  const { id, name, description, createdAt } = sprint;
+  const { id, name } = sprint;
 
   const ctx = api.useContext();
 

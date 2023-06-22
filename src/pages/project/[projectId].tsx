@@ -9,6 +9,7 @@ import { TodoList } from "../../components/todos/TodoList";
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -27,6 +28,10 @@ const SingleProjectPage: NextPage = () => {
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Something went wrong</div>;
 
+  const handleClick = () => {
+    setValue("hello");
+  };
+
   return (
     <div className="w-full">
       <Hero
@@ -34,7 +39,10 @@ const SingleProjectPage: NextPage = () => {
         description={project?.description as string}
       />
       <div className="flex flex-row">
-        <SprintMenu />
+        Value: {value}
+        <br></br>
+        <br></br>
+        <SprintMenu upClick={handleClick} />
         <div className="min-h-screen w-4/5 border-l-2 p-4">
           <TodoList projectId={projectId} />
         </div>

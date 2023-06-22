@@ -2,7 +2,7 @@ import { api } from "../../utils/api";
 import { SprintItem } from "./SprintItem";
 import { useRouter } from "next/router";
 
-export function SprintList() {
+export function SprintList({ upClick }) {
   const router = useRouter();
   const projectId = router.query.projectId as string;
 
@@ -18,7 +18,11 @@ export function SprintList() {
   return (
     <ul className="flex flex-col text-2xl">
       {sprints?.map((sprint) => {
-        return <SprintItem key={sprint.id} sprint={sprint} />;
+        return (
+          <div key={sprint.id} onClick={upClick}>
+            <SprintItem sprint={sprint} />
+          </div>
+        );
       })}
     </ul>
   );

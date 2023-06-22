@@ -6,7 +6,7 @@ export function CreateTodo() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [selectValue, setSelectValue] = useState("");
-
+  const sprintId = selectValue;
   const ctx = api.useContext();
 
   const router = useRouter();
@@ -22,8 +22,6 @@ export function CreateTodo() {
   });
 
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
-
-  const sprintId = selectValue;
 
   return (
     <form
@@ -52,7 +50,6 @@ export function CreateTodo() {
 
         <select
           className="select w-full max-w-xs border-slate-500"
-          value={selectValue}
           onChange={(e) => setSelectValue(e.target.value)}
         >
           <option disabled selected>
@@ -65,7 +62,6 @@ export function CreateTodo() {
       </div>
       <div className=" flex flex-row justify-end">
         <button className="btn-accent btn w-[25%]">Create</button>
-        <p>{selectValue}</p>
       </div>
     </form>
   );

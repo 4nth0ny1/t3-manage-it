@@ -11,7 +11,7 @@ type TodoProps = {
 
 export function TodoItem({ todo }: TodoProps) {
   const { id, name, description, sprintId } = todo;
-
+  const [showDescription, setShowDescription] = useState(false);
   const ctx = api.useContext();
 
   const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
@@ -19,8 +19,6 @@ export function TodoItem({ todo }: TodoProps) {
       await ctx.todo.getAllTodos.invalidate();
     },
   });
-
-  const [showDescription, setShowDescription] = useState(false);
 
   return (
     <li className="flex w-full flex-row justify-center">

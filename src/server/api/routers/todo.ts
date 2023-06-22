@@ -58,8 +58,17 @@ export const todoRouter = createTRPCRouter({
             id: input.sprintId
           }
         }
-        
       }
     })
   }), 
+
+  deleteTodo: protectedProcedure
+  .input(z.string())
+  .mutation(({ctx, input}) => {
+    return ctx.prisma.todo.delete({
+      where: {
+        id: input
+      }
+    })
+  })
 })

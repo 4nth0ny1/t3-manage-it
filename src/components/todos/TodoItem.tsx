@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { api } from "~/utils/api";
 
 type TodoProps = {
   todo: TodoProject;
@@ -10,6 +11,14 @@ type TodoProps = {
 
 export function TodoItem({ todo }: TodoProps) {
   const { id, name, description, sprintId } = todo;
+
+  const ctx = api.useContext();
+
+  const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
+    onSettled: async () => {
+      await ctx.todo.getAllTodos.invalidate();
+    },
+  });
 
   const [showDescription, setShowDescription] = useState(false);
 
@@ -25,7 +34,10 @@ export function TodoItem({ todo }: TodoProps) {
           </h2>
           <div className="flex flex-row gap-4 ">
             <AiFillEdit className="text-yellow-400" />
-            <BsFillTrashFill className="text-red-500" />
+            <BsFillTrashFill
+              className="text-red-500"
+              onClick={() => deleteMutation(id)}
+            />
             {showDescription ? (
               <IoMdArrowDropup
                 onClick={() => setShowDescription(!showDescription)}

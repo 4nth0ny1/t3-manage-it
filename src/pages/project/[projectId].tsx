@@ -5,6 +5,7 @@ import { type NextPage } from "next";
 import { Hero } from "../../components/Hero";
 import { SprintMenu } from "../../components/SprintMenu";
 import { TodoList } from "../../components/todos/TodoList";
+import type { Project } from "../../types";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
@@ -21,6 +22,10 @@ const SingleProjectPage: NextPage = () => {
     data: project,
     isLoading,
     isError,
+  }: {
+    data: Project | undefined | null;
+    isLoading: boolean;
+    isError: boolean;
   } = api.project.getOneProject.useQuery({
     projectId,
   });
@@ -34,17 +39,14 @@ const SingleProjectPage: NextPage = () => {
 
   return (
     <div className="w-full">
-      <Hero
-        name={project?.name as string}
-        description={project?.description as string}
-      />
+      <Hero name={project?.name} description={project?.description} />
       <div className="flex flex-row">
         <br></br>
         <br></br>
 
         <SprintMenu upLift={handleClick} />
         <div className="min-h-screen w-4/5 border-l-2 p-4">
-          <TodoList projectId={projectId} sprintId={sprintId} />
+          <TodoList sprintId={sprintId} projectId={projectId} />
         </div>
       </div>
     </div>

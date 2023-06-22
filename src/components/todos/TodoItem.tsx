@@ -1,4 +1,4 @@
-import type { TodoProject } from "../../types";
+import type { Todo } from "../../types";
 import { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
@@ -6,7 +6,7 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { api } from "~/utils/api";
 
 type TodoProps = {
-  todo: TodoProject;
+  todo: Todo;
 };
 
 export function TodoItem({ todo }: TodoProps) {

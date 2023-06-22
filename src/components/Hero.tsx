@@ -1,6 +1,6 @@
 type ProjectProps = {
-  name: string;
-  description: string;
+  name: string | undefined | null;
+  description: string | undefined | null;
 };
 
 export function Hero({ name, description }: ProjectProps) {

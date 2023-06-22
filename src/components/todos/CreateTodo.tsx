@@ -70,7 +70,11 @@ export function CreateTodo() {
                 Pick Sprint
               </option>
               {sprints?.map((sprint) => {
-                return <option key={sprint.id}>{sprint.id}</option>;
+                return (
+                  <option value={sprint.id} key={sprint.id}>
+                    {sprint.name}
+                  </option>
+                );
               })}
             </select>
           </div>

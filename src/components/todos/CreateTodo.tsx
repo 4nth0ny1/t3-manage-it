@@ -21,7 +21,6 @@ export function CreateTodo() {
       await ctx.todo.getAllTodosFromProject.invalidate();
       setName("");
       setDescription("");
-      setSelectValue("");
     },
   });
 

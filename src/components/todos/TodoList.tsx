@@ -16,9 +16,11 @@ export function TodoList({ projectId, sprintId }: ProjectIdProps) {
     projectId,
   });
 
-  const filteredList = todosFromProject.filter((todo) => {
-    return sprintId === todo.sprintId;
-  });
+  console.log(todosFromProject);
+
+  // const filteredList = todosFromProject.filter((todo) => {
+  //   return sprintId === todo.sprintId;
+  // });
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Something went wrong</div>;

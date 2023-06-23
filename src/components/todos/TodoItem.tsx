@@ -4,13 +4,17 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { api } from "~/utils/api";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 type TodoProps = {
   todo: Todo;
 };
 
+dayjs.extend(relativeTime);
+
 export function TodoItem({ todo }: TodoProps) {
-  const { id, name, description, sprintId } = todo;
+  const { id, name, description, sprintId, createdAt } = todo;
   const [showDescription, setShowDescription] = useState(false);
   const ctx = api.useContext();
 
@@ -47,7 +51,11 @@ export function TodoItem({ todo }: TodoProps) {
             )}
           </div>
         </div>
-        <p className="text-lg font-thin italic">Created: 6 hours ago</p>
+        <p className="text-lg font-thin italic">
+          <span className="font-thin italic">{` Created ${dayjs(
+            createdAt
+          ).fromNow()}`}</span>
+        </p>
         {showDescription && <p className="text-lg">{description}</p>}
       </div>
     </li>

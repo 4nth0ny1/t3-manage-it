@@ -24,14 +24,20 @@ export function TodoList({ sprintId, projectId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="mb-6 flex w-full flex-row justify-center p-4">
-        <CreateTodo />
-      </div>
-      {filteredList
-        ? filteredList?.map((todo) => {
-            return <TodoItem key={todo.id} todo={todo} />;
-          })
-        : "Choose a Sprint"}
+      {filteredList && (
+        <div className="mb-6 flex w-full flex-row justify-center p-4">
+          <CreateTodo />
+        </div>
+      )}
+      {filteredList ? (
+        filteredList?.map((todo) => {
+          return <TodoItem key={todo.id} todo={todo} />;
+        })
+      ) : (
+        <div className="align-center flex w-full flex-row justify-center p-24">
+          <div className="flex flex-col justify-center">Choose a Sprint</div>
+        </div>
+      )}
     </div>
   );
 }

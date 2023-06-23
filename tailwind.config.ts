@@ -5,5 +5,8 @@ export default {
   theme: {
     extend: {},
   },
+  daisyui: {
+    themes: ["night"]
+  },
   plugins: [require("daisyui")],
 } satisfies Config;

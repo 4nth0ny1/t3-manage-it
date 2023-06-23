@@ -1,11 +1,7 @@
-import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import { api } from "~/utils/api";
 import { ProjectList } from "../components/projects/ProjectList";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -18,39 +14,9 @@ export default function Home() {
           <h1 className="tracking-tightsm:text-[5rem] text-5xl font-extrabold">
             <span className="text-[hsl(280,100%,70%)]">T3</span> Manage It
           </h1>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl ">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
-            <AuthShowcase />
-          </div>
         </div>
         <ProjectList />
       </main>
     </>
-  );
-}
-
-function AuthShowcase() {
-  const { data: sessionData } = useSession();
-
-  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined }
-  );
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl ">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
-      <button
-        className="btn-accent btn rounded-full px-10 py-3 font-semibold no-underline transition"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
-    </div>
   );
 }

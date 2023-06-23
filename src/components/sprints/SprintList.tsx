@@ -2,7 +2,11 @@ import { api } from "../../utils/api";
 import { SprintItem } from "./SprintItem";
 import { useRouter } from "next/router";
 
-export function SprintList({ upLift }) {
+type SprintProps = {
+  upLift: (id: string) => void;
+};
+
+export function SprintList({ upLift }: SprintProps) {
   const router = useRouter();
   const projectId = router.query.projectId as string;
 

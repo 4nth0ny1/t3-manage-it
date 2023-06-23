@@ -18,7 +18,7 @@ export function CreateTodo() {
 
   const { mutate } = api.todo.createTodo.useMutation({
     onSettled: async () => {
-      await ctx.todo.getAllTodosFromProject.invalidate();
+      await ctx.todo.getAllTodos.invalidate();
       setName("");
       setDescription("");
     },

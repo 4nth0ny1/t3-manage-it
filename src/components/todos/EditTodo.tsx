@@ -14,12 +14,6 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
   const [updatedName, setUpdatedName] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
 
-  //   const [updatedContent, setUpdatedContent] = useState({
-  //     id: id,
-  //     name: updatedName,
-  //     description: updatedDescription,
-  //   });
-
   const { mutate: updateMutation } = api.todo.updateTodo.useMutation({
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();
@@ -42,13 +36,13 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
       <input
         type="text"
         className="input-bordered input w-full max-w-xs border-gray-300 text-gray-300"
-        placeholder="Name"
+        placeholder={name}
         onChange={(e) => setUpdatedName(e.target.value)}
       />
       <input
         type="text"
         className="input-bordered input w-full max-w-xs border-gray-300 text-gray-300"
-        placeholder="Description"
+        placeholder={description}
         onChange={(e) => setUpdatedDescription(e.target.value)}
       />
       <button className="btn-primary btn rounded-xl">Confirm Change</button>

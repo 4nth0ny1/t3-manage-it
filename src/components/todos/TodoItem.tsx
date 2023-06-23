@@ -47,7 +47,7 @@ export function TodoItem({ todo }: TodoProps) {
                 <div className="form-control">
                   <input
                     type="checkbox"
-                    checked={done as boolean}
+                    checked={done}
                     className="checkbox-success checkbox cursor-pointer"
                     onChange={(e) =>
                       toggleMutation({ id, done: e.target.checked })

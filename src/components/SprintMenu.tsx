@@ -3,7 +3,11 @@ import { useState } from "react";
 import { SprintList } from "../components/sprints/SprintList";
 import { CreateSprint } from "../components/sprints/CreateSprint";
 
-export function SprintMenu({ upLift }) {
+type SprintProps = {
+  upLift: (id: string) => void;
+};
+
+export function SprintMenu({ upLift }: SprintProps) {
   const [creating, setCreating] = useState(false);
 
   return (

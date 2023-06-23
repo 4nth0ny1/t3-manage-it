@@ -14,7 +14,7 @@ export function TodoList({ sprintId, projectId }: ProjectIdProps) {
     isLoading,
     isError,
   } = api.todo.getAllTodos.useQuery({ sprintId });
-
+  //teest
   // if (isLoading) return <div>Loading...</div>;
   // if (isError) return <div>Something went wrong</div>;
 

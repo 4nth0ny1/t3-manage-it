@@ -19,7 +19,7 @@ export function SprintMenu({ upLift }: SprintProps) {
         <div>
           <div className="flex flex-row justify-end py-4">
             <AiFillMinusCircle
-              className="text-xl text-white"
+              className="text-xl text-green-400"
               onClick={() => setCreating(!creating)}
             />
           </div>
@@ -28,7 +28,7 @@ export function SprintMenu({ upLift }: SprintProps) {
       ) : (
         <div className="flex flex-row justify-end py-4">
           <AiFillPlusCircle
-            className="text-xl text-white"
+            className="text-xl text-green-400"
             onClick={() => setCreating(!creating)}
           />
         </div>

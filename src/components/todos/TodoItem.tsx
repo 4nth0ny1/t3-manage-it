@@ -1,6 +1,6 @@
 import type { Todo } from "../../types";
 import { useState } from "react";
-import { BsFillTrashFill } from "react-icons/bs";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 import { AiFillEdit } from "react-icons/ai";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { api } from "~/utils/api";
@@ -35,9 +35,9 @@ export function TodoItem({ todo }: TodoProps) {
             {name}
           </h2>
           <div className="flex flex-row gap-4 ">
-            <AiFillEdit className="text-yellow-400" />
-            <BsFillTrashFill
-              className="text-red-500"
+            <AiFillEdit className="text-green-400" />
+            <RiDeleteBin2Fill
+              className="text-pink-400"
               onClick={() => deleteMutation(id)}
             />
             {showDescription ? (

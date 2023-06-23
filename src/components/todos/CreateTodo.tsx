@@ -49,20 +49,20 @@ export function CreateTodo() {
             <input
               type="text"
               placeholder="Name"
-              className="input-bordered input my-4 w-full border-slate-500"
+              className="input-bordered input my-4 w-full border-gray-300"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
               placeholder="Description"
-              className="input-bordered input mb-4 w-full border-b border-slate-500"
+              className="input-bordered input mb-4 w-full border-b border-gray-300"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
 
             <select
-              className="select w-full max-w-xs border-slate-500"
+              className="select w-full max-w-xs border-gray-300"
               onChange={(e) => setSelectValue(e.target.value)}
             >
               <option disabled selected>

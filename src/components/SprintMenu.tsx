@@ -11,7 +11,7 @@ export function SprintMenu({ upLift }: SprintProps) {
   const [creating, setCreating] = useState(false);
 
   return (
-    <div className="border-right-200 min-h-screen w-1/5 border-black p-4">
+    <div className="border-right-200 min-h-screen w-1/5 border-black p-8">
       <h2 className="text-2xl">Sprints</h2>
 
       <SprintList upLift={upLift} />

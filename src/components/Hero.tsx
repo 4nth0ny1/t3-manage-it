@@ -5,7 +5,7 @@ type ProjectProps = {
 
 export function Hero({ name, description }: ProjectProps) {
   return (
-    <div className="hero bg-base-200">
+    <div className="hero border-b bg-base-100">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">{name}</h1>

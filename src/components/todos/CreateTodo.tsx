@@ -27,7 +27,7 @@ export function CreateTodo() {
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
 
   return (
-    <div className="flex w-[700px] flex-col border-b  border-black pb-4">
+    <div className="flex w-[700px] flex-col border-b pb-4">
       <div
         onClick={() => setShowForm(!showForm)}
         className="flex flex-row justify-between"

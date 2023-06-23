@@ -19,7 +19,7 @@ export function SprintItem({ sprint, upLift }: SprintProps) {
   });
 
   return (
-    <li className="w-full border-b border-black">
+    <li className="w-full border-b">
       <div className="flex flex-row justify-between">
         <p onClick={() => upLift(id)}>{name}</p>
         <button onClick={() => deleteMutation(id)} className="text-error">

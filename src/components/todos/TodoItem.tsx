@@ -54,12 +54,21 @@ export function TodoItem({ todo }: TodoProps) {
                     }
                   />
                 </div>
-                <h2
-                  onClick={() => setShowDescription(!showDescription)}
-                  className="flex flex-col justify-center text-xl"
-                >
-                  {name}
-                </h2>
+                {done ? (
+                  <h2
+                    onClick={() => setShowDescription(!showDescription)}
+                    className="flex flex-col justify-center text-xl line-through"
+                  >
+                    {name}
+                  </h2>
+                ) : (
+                  <h2
+                    onClick={() => setShowDescription(!showDescription)}
+                    className="flex flex-col justify-center text-xl"
+                  >
+                    {name}
+                  </h2>
+                )}
               </div>
               <div className="flex flex-row gap-4">
                 <AiFillEdit

@@ -76,6 +76,22 @@ export const todoRouter = createTRPCRouter({
     })
   }),
 
+  toggleTodo: protectedProcedure
+  .input(z.object({
+    id: z.string(),
+    done: z.boolean()
+  }))
+  .mutation(({ ctx, input}) => {
+    return ctx.prisma.todo.update({
+      where: {
+        id: input.id,
+      },
+      data: {
+        done: input.done
+      }
+    })
+  }),
+
   deleteTodo: protectedProcedure
   .input(z.string())
   .mutation(({ctx, input}) => {

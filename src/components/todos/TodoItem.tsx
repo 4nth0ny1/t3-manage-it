@@ -15,7 +15,7 @@ type TodoProps = {
 dayjs.extend(relativeTime);
 
 export function TodoItem({ todo }: TodoProps) {
-  const { id, name, description, sprintId, createdAt } = todo;
+  const { id, name, description, sprintId, done, createdAt } = todo;
   const [showDescription, setShowDescription] = useState(false);
   const [editing, setEditing] = useState(false);
 
@@ -23,7 +23,13 @@ export function TodoItem({ todo }: TodoProps) {
 
   const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
     onSettled: async () => {
-      await ctx.todo.getAllTodosFromProject.invalidate();
+      await ctx.todo.getAllTodos.invalidate();
+    },
+  });
+
+  const { mutate: toggleMutation } = api.todo.toggleTodo.useMutation({
+    onSettled: async () => {
+      await ctx.todo.getAllTodos.invalidate();
     },
   });
 
@@ -37,12 +43,33 @@ export function TodoItem({ todo }: TodoProps) {
         <li className="flex w-full flex-row justify-center">
           <div className="flex w-[70%] flex-col justify-between border-b py-4">
             <div className="flex flex-row justify-between">
-              <h2
-                onClick={() => setShowDescription(!showDescription)}
-                className="text-xl"
-              >
-                {name}
-              </h2>
+              <div className="flex flex-row gap-4">
+                <div className="form-control">
+                  <input
+                    type="checkbox"
+                    checked={done}
+                    className="checkbox-success checkbox cursor-pointer"
+                    onChange={(e) =>
+                      toggleMutation({ id, done: e.target.checked })
+                    }
+                  />
+                </div>
+                {done ? (
+                  <h2
+                    onClick={() => setShowDescription(!showDescription)}
+                    className="flex flex-col justify-center text-xl line-through"
+                  >
+                    {name}
+                  </h2>
+                ) : (
+                  <h2
+                    onClick={() => setShowDescription(!showDescription)}
+                    className="flex flex-col justify-center text-xl"
+                  >
+                    {name}
+                  </h2>
+                )}
+              </div>
               <div className="flex flex-row gap-4">
                 <AiFillEdit
                   onClick={() => setEditing(!editing)}

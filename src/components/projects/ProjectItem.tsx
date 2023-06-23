@@ -11,9 +11,8 @@ export function ProjectItem({ project }: ProjectProps) {
   return (
     <div className="flex flex-row justify-center p-4">
       <Link href={`/project/${id}`}>
-        <button className="btn flex flex-col text-black">
+        <button className="btn flex flex-col bg-gray-400 text-black hover:bg-gray-500">
           <div>{name}</div>
-          <div>{description}</div>
         </button>
       </Link>
     </div>

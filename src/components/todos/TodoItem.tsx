@@ -71,10 +71,14 @@ export function TodoItem({ todo }: TodoProps) {
                 )}
               </div>
               <div className="flex flex-row gap-4">
-                <AiFillEdit
-                  onClick={() => setEditing(!editing)}
-                  className="text-green-400"
-                />
+                {!done && (
+                  <div className="flex flex-row gap-4">
+                    <AiFillEdit
+                      onClick={() => setEditing(!editing)}
+                      className="text-green-400"
+                    />
+                  </div>
+                )}
                 <RiDeleteBin2Fill
                   className="text-pink-400"
                   onClick={() => deleteMutation(id)}

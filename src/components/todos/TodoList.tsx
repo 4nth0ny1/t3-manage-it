@@ -1,6 +1,7 @@
 import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { CreateTodo } from "../../components/todos/CreateTodo";
+import { ProgressBar } from "~/components/ProgressBar";
 
 type ProjectIdProps = {
   sprintId: string;
@@ -11,14 +12,22 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   const { data: allTodos } = api.todo.getAllTodos.useQuery({ sprintId });
 
+  const doneTodos = allTodos?.filter((todo) => {
+    return todo.done;
+  });
+  const totalTodos = allTodos?.length as number;
+  const doneTodosLength = doneTodos?.length as number;
+  const percentDone = ((100 * doneTodosLength) / totalTodos).toFixed(0);
+
   const filteredList = allTodos?.filter((todo) => {
     return sprintId === todo.sprintId;
   });
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="flex w-full flex-row justify-center p-10">
+      <div className="flex w-full flex-row justify-between px-20 py-10">
         <h2 className="text-3xl">{sprint?.name}</h2>
+        <ProgressBar percentDone={percentDone} />
       </div>
       {filteredList && (
         <div className="mb-6 flex w-full flex-row justify-center p-4">

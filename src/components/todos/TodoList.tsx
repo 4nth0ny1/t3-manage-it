@@ -1,21 +1,15 @@
 import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { CreateTodo } from "../../components/todos/CreateTodo";
-import type { Todo } from "../../types";
 
 type ProjectIdProps = {
   sprintId: string;
-  projectId: string;
 };
 
-export function TodoList({ sprintId, projectId }: ProjectIdProps) {
+export function TodoList({ sprintId }: ProjectIdProps) {
   const { data: sprint } = api.sprint.getOneSprint.useQuery({ sprintId });
 
-  const {
-    data: allTodos,
-    isLoading,
-    isError,
-  } = api.todo.getAllTodos.useQuery({ sprintId });
+  const { data: allTodos } = api.todo.getAllTodos.useQuery({ sprintId });
 
   const filteredList = allTodos?.filter((todo) => {
     return sprintId === todo.sprintId;

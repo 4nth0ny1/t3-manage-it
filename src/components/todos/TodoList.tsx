@@ -19,6 +19,9 @@ export function TodoList({ sprintId }: ProjectIdProps) {
   const doneTodosLength = doneTodos?.length as number;
   const percentDone = ((100 * doneTodosLength) / totalTodos).toFixed(0);
 
+  let numberPercent: number = parseInt(percentDone);
+  if (isNaN(numberPercent)) numberPercent = 0;
+
   const filteredList = allTodos?.filter((todo) => {
     return sprintId === todo.sprintId;
   });
@@ -29,7 +32,7 @@ export function TodoList({ sprintId }: ProjectIdProps) {
         <div className="flex flex-col">
           <h2 className="text-3xl">{sprint?.name}</h2>
           <div className="flex flex-row justify-center py-4">
-            {filteredList && <ProgressBar percentDone={percentDone} />}
+            {filteredList && <ProgressBar percentDone={numberPercent} />}
           </div>
         </div>
         {filteredList && <CreateTodo />}

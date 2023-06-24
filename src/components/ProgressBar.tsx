@@ -1,6 +1,5 @@
 type PercentProps = {
-  percentDone: string;
-  [key: string]: string | number;
+  percentDone: number;
 };
 
 export function ProgressBar({ percentDone }: PercentProps) {

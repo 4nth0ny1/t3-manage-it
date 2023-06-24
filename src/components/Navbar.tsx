@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
+import Image from "next/image";
 
 export function Navbar() {
+  const { data: sessionData } = useSession();
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -14,7 +16,12 @@ export function Navbar() {
         <div className="dropdown-end dropdown">
           <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
             <div className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <Image
+                src={sessionData?.user.image as string}
+                alt="Profile Image"
+                width={50}
+                height={50}
+              />
             </div>
           </label>
           <ul

@@ -25,15 +25,16 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="flex w-full flex-row justify-between px-20 py-10">
-        <h2 className="text-3xl">{sprint?.name}</h2>
-        {filteredList && <ProgressBar percentDone={percentDone} />}
-      </div>
-      {filteredList && (
-        <div className="mb-6 flex w-full flex-row justify-center p-4">
-          <CreateTodo />
+      <div className="flex w-full flex-row justify-between border-b border-gray-300 px-20 py-10 mb-10">
+        <div className="flex flex-col">
+          <h2 className="text-3xl">{sprint?.name}</h2>
+          <div className="flex flex-row justify-center py-4">
+            {filteredList && <ProgressBar percentDone={percentDone} />}
+          </div>
         </div>
-      )}
+        {filteredList && <CreateTodo />}
+      </div>
+
       {filteredList ? (
         filteredList?.map((todo) => {
           return <TodoItem key={todo.id} todo={todo} />;

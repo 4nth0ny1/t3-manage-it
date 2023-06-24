@@ -22,6 +22,9 @@ export function TodoList({ sprintId }: ProjectIdProps) {
   let numberPercent: number = parseInt(percentDone);
   if (isNaN(numberPercent)) numberPercent = 0;
 
+  // todo
+  // if (numberPercent === 100) lift to sprintItem and mark sprint as <completed>
+
   const filteredList = allTodos?.filter((todo) => {
     return sprintId === todo.sprintId;
   });

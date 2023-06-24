@@ -40,10 +40,11 @@ const SingleProjectPage: NextPage = () => {
   return (
     <div className="w-full">
       <Hero name={project?.name} description={project?.description} />
+
       <div className="flex flex-row">
         <SprintMenu upLift={handleClick} />
         <div className="min-h-screen w-4/5 p-4">
-          <TodoList sprintId={sprintId} projectId={projectId} />
+          <TodoList sprintId={sprintId} />
         </div>
       </div>
     </div>

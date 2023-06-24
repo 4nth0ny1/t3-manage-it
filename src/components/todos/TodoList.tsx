@@ -1,6 +1,7 @@
 import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { CreateTodo } from "../../components/todos/CreateTodo";
+import { ProgressBar } from "~/components/ProgressBar";
 
 type ProjectIdProps = {
   sprintId: string;
@@ -17,8 +18,9 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="flex w-full flex-row justify-center p-10">
+      <div className="flex w-full flex-row justify-between px-20 py-10">
         <h2 className="text-3xl">{sprint?.name}</h2>
+        <ProgressBar />
       </div>
       {filteredList && (
         <div className="mb-6 flex w-full flex-row justify-center p-4">

@@ -1,8 +1,14 @@
-export function ProgressBar() {
+type PercentProps = {
+  percentDone: string;
+  [key: string]: string | number;
+};
+
+export function ProgressBar({ percentDone }: PercentProps) {
+  const style = { "--value": `${percentDone}` } as React.CSSProperties;
+
   return (
-    <h2>Progress Bar Location</h2>
-    // <div className="radial-progress" style={{ "--value": 70 }}>
-    //   70%
-    // </div>
+    <div className="radial-progress" style={style}>
+      {percentDone}
+    </div>
   );
 }

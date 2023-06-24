@@ -37,11 +37,13 @@ export function TodoList({ sprintId }: ProjectIdProps) {
         </div>
         {filteredList && <CreateTodo />}
       </div>
-      <div className="mb-4 flex w-full flex-row justify-end px-20">
-        <span className="italic">
-          {doneTodosLength}/{totalTodos} todos completed
-        </span>
-      </div>
+      {filteredList && (
+        <div className="mb-4 flex w-full flex-row justify-end px-20">
+          <span className="italic">
+            {doneTodosLength}/{totalTodos} todos completed
+          </span>
+        </div>
+      )}
       {filteredList ? (
         filteredList?.map((todo) => {
           return <TodoItem key={todo.id} todo={todo} />;

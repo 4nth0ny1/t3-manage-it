@@ -7,7 +7,7 @@ export function ProgressBar({ percentDone }: PercentProps) {
 
   return (
     <div className="radial-progress" style={style}>
-      {percentDone}
+      {percentDone}%
     </div>
   );
 }

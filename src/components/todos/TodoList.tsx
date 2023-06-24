@@ -33,7 +33,7 @@ export function TodoList({ sprintId }: ProjectIdProps) {
     <div className="flex flex-row flex-wrap text-2xl">
       <div className="mb-10 flex w-full flex-row justify-between  px-20 py-10">
         <div className="flex flex-col">
-          <h2 className="text-3xl">{sprint?.name}</h2>
+          <h2 className="text-center text-3xl">{sprint?.name}</h2>
           <div className="flex flex-row justify-center py-4">
             {filteredList && <ProgressBar percentDone={numberPercent} />}
           </div>

@@ -3,7 +3,10 @@ type PercentProps = {
 };
 
 export function ProgressBar({ percentDone }: PercentProps) {
-  const style = { "--value": `${percentDone}` } as React.CSSProperties;
+  const style = {
+    "--value": `${percentDone}`,
+    "--size": "7rem",
+  } as React.CSSProperties;
 
   return (
     <div className="radial-progress" style={style}>

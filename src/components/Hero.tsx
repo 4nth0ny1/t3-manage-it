@@ -12,13 +12,43 @@ type ProjectProps = {
 
 export function Hero({ id, name, description, projectId }: ProjectProps) {
   const [editingProject, setProjectEditing] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+
+  const shortDesc = description?.substring(0, 50);
+
   return (
     <div className="hero flex flex-row justify-center gap-20 border-b bg-base-100">
       <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">{name}</h1>
-          <article className="prose pt-4 text-lg lg:prose-xl">
-            <ReactMarkdown>{description as string}</ReactMarkdown>
+        <div className="">
+          <h1
+            className="text-5xl font-bold"
+            onClick={() => setShowDescription(!showDescription)}
+          >
+            {name}
+          </h1>
+
+          <article className="prose text-lg lg:prose-xl">
+            {showDescription ? (
+              <div>
+                <ReactMarkdown>{description as string}</ReactMarkdown>
+                <p
+                  onClick={() => setShowDescription(!showDescription)}
+                  className="text-sm italic"
+                >
+                  Read less
+                </p>
+              </div>
+            ) : (
+              <div>
+                <ReactMarkdown>{shortDesc as string}</ReactMarkdown>
+                <p
+                  onClick={() => setShowDescription(!showDescription)}
+                  className="text-sm italic"
+                >
+                  Read more
+                </p>
+              </div>
+            )}
           </article>
         </div>
       </div>

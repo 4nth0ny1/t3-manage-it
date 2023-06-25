@@ -53,7 +53,6 @@ export function EditProject({
 
       <CodeMirror
         value={updatedDescription}
-        placeholder={description}
         width="600px"
         height="20vh"
         minWidth="100%"

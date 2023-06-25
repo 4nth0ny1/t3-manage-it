@@ -1,6 +1,7 @@
 import { EditProject } from "./projects/EditProject";
 import { AiFillEdit } from "react-icons/ai";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 type ProjectProps = {
   id: string | undefined;
@@ -16,7 +17,9 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">{name}</h1>
-          <p className="py-6">{description}</p>
+          <article className="prose pt-4 text-lg lg:prose-xl">
+            <ReactMarkdown>{description as string}</ReactMarkdown>
+          </article>
         </div>
       </div>
       <AiFillEdit

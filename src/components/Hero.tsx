@@ -57,15 +57,17 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
         className="text-3xl text-green-400"
         onClick={() => setProjectEditing(!editingProject)}
       />
-      {editingProject && (
-        <EditProject
-          id={id}
-          name={name}
-          description={description}
-          projectId={projectId}
-          onProjectEdit={() => setProjectEditing(!editingProject)}
-        />
-      )}
+      <div className="h-[400px] w-[600px]">
+        {editingProject && (
+          <EditProject
+            id={id}
+            name={name}
+            description={description}
+            projectId={projectId}
+            onProjectEdit={() => setProjectEditing(!editingProject)}
+          />
+        )}
+      </div>
     </div>
   );
 }

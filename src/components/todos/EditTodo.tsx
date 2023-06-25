@@ -23,7 +23,7 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
 
   return (
     <form
-      className="flex flex-row gap-4 pt-10"
+      className="flex w-full flex-col gap-4 pt-10"
       onSubmit={(e) => {
         e.preventDefault();
         updateMutation({
@@ -35,17 +35,20 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
     >
       <input
         type="text"
-        className="input-bordered input w-full max-w-xs border-gray-300 text-gray-300"
+        className="input-bordered input w-full border-gray-300 text-gray-300"
         placeholder={name}
         onChange={(e) => setUpdatedName(e.target.value)}
       />
-      <input
-        type="text"
-        className="input-bordered input w-full max-w-xs border-gray-300 text-gray-300"
+      <textarea
+        className="input-bordered input h-[200px] w-full border-gray-300 p-4 text-gray-300"
         placeholder={description}
         onChange={(e) => setUpdatedDescription(e.target.value)}
       />
-      <button className="btn-primary btn rounded-xl">Confirm Change</button>
+      <div className="flex flex-row justify-end">
+        <button className="btn-primary btn w-[25%] rounded-xl">
+          Confirm Change
+        </button>
+      </div>
     </form>
   );
 }

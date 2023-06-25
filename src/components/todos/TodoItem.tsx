@@ -36,8 +36,10 @@ export function TodoItem({ todo }: TodoProps) {
   return (
     <Fragment>
       {editing ? (
-        <div className="flex w-full flex-row justify-center">
-          <EditTodo todo={todo} onEdit={() => setEditing(!editing)} />
+        <div className=" flex w-full flex-row justify-center pb-4">
+          <div className="flex w-[70%] flex-row justify-center">
+            <EditTodo todo={todo} onEdit={() => setEditing(!editing)} />
+          </div>
         </div>
       ) : (
         <li className="flex w-full flex-row justify-center">

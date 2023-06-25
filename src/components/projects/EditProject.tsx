@@ -10,6 +10,7 @@ type ProjectProps = {
   name: string | undefined;
   description: string | undefined;
   projectId: string;
+  onProjectEdit: () => void;
 };
 
 export function EditProject({
@@ -17,6 +18,7 @@ export function EditProject({
   name,
   description,
   projectId,
+  onProjectEdit,
 }: ProjectProps) {
   const [updatedName, setUpdatedName] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
@@ -26,6 +28,7 @@ export function EditProject({
   const { mutate: updateMutation } = api.project.updateProject.useMutation({
     onSettled: async () => {
       await ctx.project.getOneProject.invalidate();
+      onProjectEdit();
     },
   });
 

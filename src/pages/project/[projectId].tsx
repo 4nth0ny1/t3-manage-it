@@ -39,7 +39,12 @@ const SingleProjectPage: NextPage = () => {
 
   return (
     <div className="w-full">
-      <Hero name={project?.name} description={project?.description} />
+      <Hero
+        id={project?.id}
+        name={project?.name}
+        description={project?.description}
+        projectId={projectId}
+      />
 
       <div className="flex flex-row">
         <SprintMenu upLift={handleClick} />

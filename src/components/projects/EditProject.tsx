@@ -61,7 +61,7 @@ export function EditProject({
           markdown({ base: markdownLanguage, codeLanguages: languages }),
         ]}
         onChange={(value) => setUpdatedDescription(value)}
-        className="border border-gray-300 text-lg"
+        className="border border-gray-300 text-lg text-black"
       />
 
       <div className="flex flex-row justify-end">

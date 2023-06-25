@@ -7,6 +7,7 @@ import { api } from "~/utils/api";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { EditTodo } from "../todos/EditTodo";
+import ReactMarkdown from "react-markdown";
 
 type TodoProps = {
   todo: Todo;
@@ -101,7 +102,11 @@ export function TodoItem({ todo }: TodoProps) {
                 createdAt
               ).fromNow()}`}</span>
             </p>
-            {showDescription && <p className="text-lg">{description}</p>}
+            {showDescription && (
+              <article className="prose pt-4 text-lg lg:prose-xl">
+                <ReactMarkdown>{description}</ReactMarkdown>
+              </article>
+            )}
           </div>
         </li>
       )}

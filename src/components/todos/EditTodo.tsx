@@ -2,6 +2,10 @@ import type { Todo } from "../../types";
 import { api } from "../../utils/api";
 import { useState } from "react";
 
+import CodeMirror from "@uiw/react-codemirror";
+import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
+
 type TodoProps = {
   todo: Todo;
   onEdit: () => void;
@@ -39,10 +43,19 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
         placeholder={name}
         onChange={(e) => setUpdatedName(e.target.value)}
       />
-      <textarea
-        className="input-bordered input h-[200px] w-full border-gray-300 p-4 text-gray-300"
+
+      <CodeMirror
+        value={updatedDescription}
         placeholder={description}
-        onChange={(e) => setUpdatedDescription(e.target.value)}
+        width="500px"
+        height="30vh"
+        minWidth="100%"
+        minHeight="30vh"
+        extensions={[
+          markdown({ base: markdownLanguage, codeLanguages: languages }),
+        ]}
+        onChange={(value) => setUpdatedDescription(value)}
+        className="border border-gray-300 text-lg"
       />
       <div className="flex flex-row justify-end">
         <button className="btn-primary btn w-[25%] rounded-xl">

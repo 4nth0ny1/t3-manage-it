@@ -15,6 +15,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
   const [showDescription, setShowDescription] = useState(false);
 
   const shortDesc = description?.substring(0, 50);
+  //test
 
   return (
     <div className="hero flex flex-row justify-center gap-20 border-b bg-base-100">

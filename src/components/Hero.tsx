@@ -18,7 +18,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
   const shortDesc = description?.substring(0, 50);
 
   return (
-    <div className="hero flex flex-row justify-center gap-20 border-b bg-base-100">
+    <div className="hero flex flex-row justify-center gap-20 border-b-2 border-gray-600 bg-base-100">
       <div className="hero-content text-center">
         <div className="">
           <h1

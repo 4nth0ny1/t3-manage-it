@@ -16,6 +16,7 @@ https://t3-manage-it.vercel.app/
 - ReactMarkdown
 - CodeMirror
 - DayJS
+- React Icons
 
 ### The Goal and App Overview
 
@@ -31,7 +32,7 @@ The todos can be toggled to a complete status, edited and deleted at any time. C
 
 On the backend, I used PlanetscaleDB, Prisma and tRPC. This combination is wildly productive and makes making a deployed typesafe full stack app a breeze.
 
-In 2 lines of code I can have my backend connected to my frontend.
+In 2 lines of code, I can have my backend connected to my frontend.
 
 Backend
 
@@ -53,9 +54,17 @@ As for PlanetscaleDB, this is my first try at it and I have to say it's very use
 
 The Frontend uses a variety of tools like NextJS, TailwindCSS, DaisyUI, CodeMirror, React Markdown, and DayJS. There is plenty of good information available in their respective docs, YouTube and blogs on how to use all of them.
 
+I used DaisyUI for the Navbar, Theme, Radial Progress Bar, Inputs, and Buttons.
+
+Tailwind Typography, CodeMirror and ReactMarkdown were used to create a markdown enabled description inputs and rendering.
+
+DayJS, for dates.
+
+React Icons for all icons.
+
 ### Deployment
 
-For this I used Vercel and probably will continue to use it on my future deployments.
+Vercel
 
 ### To create your own T3 App ...
 

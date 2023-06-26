@@ -12,37 +12,32 @@ export function Navbar() {
           <span className="text-[hsl(280,100%,70%)]">T3</span> Manage It
         </Link>
       </div>
-      <div className="flex-none gap-2">
-        <div className="dropdown-end dropdown">
-          <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
-            <div className="w-10 rounded-full">
-              <Image
-                src={sessionData?.user.image as string}
-                alt="Profile Image"
-                width={50}
-                height={50}
-              />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-gray-300 p-2 text-black shadow hover:bg-base-100 hover:text-white"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <AuthShowcase />
-            </li>
-          </ul>
+      {sessionData ? (
+        <div className="flex-none gap-2">
+          <div className="dropdown-end dropdown">
+            <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
+              <div className="w-10 rounded-full">
+                <Image
+                  src={sessionData?.user.image as string}
+                  alt="Profile Image"
+                  width={50}
+                  height={50}
+                />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-gray-300 p-2 text-black shadow hover:bg-base-100 hover:text-white"
+            >
+              <li>
+                <AuthShowcase />
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      ) : (
+        <AuthShowcase />
+      )}
     </div>
   );
 }
@@ -50,16 +45,10 @@ export function Navbar() {
 function AuthShowcase() {
   const { data: sessionData } = useSession();
 
-  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined }
-  );
-
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl ">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
         className="btn-accent btn rounded-full px-10 py-3 font-semibold no-underline transition"

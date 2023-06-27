@@ -53,17 +53,19 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
           </article>
         </div>
       </div>
-      {editingProject ? (
-        <BsBackspace
-          className="text-3xl text-pink-400"
-          onClick={() => setProjectEditing(!editingProject)}
-        />
-      ) : (
-        <AiFillEdit
-          className="text-3xl text-green-400"
-          onClick={() => setProjectEditing(!editingProject)}
-        />
-      )}
+      <div className="flex flex-row justify-end">
+        {editingProject ? (
+          <BsBackspace
+            className="text-2xl text-pink-400"
+            onClick={() => setProjectEditing(!editingProject)}
+          />
+        ) : (
+          <AiFillEdit
+            className="text-2xl text-green-400"
+            onClick={() => setProjectEditing(!editingProject)}
+          />
+        )}
+      </div>
       {/* <div className="h-[400px] w-[600px]"> */}
       {editingProject && (
         <EditProject

@@ -65,7 +65,7 @@ export function EditProject({
       />
 
       <div className="flex flex-row justify-end">
-        <button className="btn-primary btn w-[25%] rounded-xl">
+        <button className="btn-accent btn w-[40%] rounded-xl">
           Confirm Change
         </button>
       </div>

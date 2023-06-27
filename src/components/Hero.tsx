@@ -22,7 +22,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
       <div className="">
         <div className="">
           <h1
-            className="text-5xl font-bold"
+            className="truncate text-ellipsis text-5xl font-bold	"
             onClick={() => setShowDescription(!showDescription)}
           >
             {name}
@@ -34,7 +34,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
                 <ReactMarkdown>{description as string}</ReactMarkdown>
                 <p
                   onClick={() => setShowDescription(!showDescription)}
-                  className="text-sm italic"
+                  className="text-sm italic "
                 >
                   Read less
                 </p>
@@ -44,7 +44,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
                 <ReactMarkdown>{shortDesc as string}</ReactMarkdown>
                 <p
                   onClick={() => setShowDescription(!showDescription)}
-                  className="text-sm italic"
+                  className="text-sm italic "
                 >
                   Read more
                 </p>

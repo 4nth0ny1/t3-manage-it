@@ -18,8 +18,8 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
   const shortDesc = description?.substring(0, 50);
 
   return (
-    <div className="hero flex flex-row justify-center gap-20 border-b-2 border-gray-600 bg-base-100">
-      <div className="hero-content text-center">
+    <div className="flex flex-col border-b-2 border-gray-600 bg-base-100 p-8">
+      <div className="">
         <div className="">
           <h1
             className="text-5xl font-bold"
@@ -64,17 +64,17 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
           onClick={() => setProjectEditing(!editingProject)}
         />
       )}
-      <div className="h-[400px] w-[600px]">
-        {editingProject && (
-          <EditProject
-            id={id}
-            name={name}
-            description={description}
-            projectId={projectId}
-            onProjectEdit={() => setProjectEditing(!editingProject)}
-          />
-        )}
-      </div>
+      {/* <div className="h-[400px] w-[600px]"> */}
+      {editingProject && (
+        <EditProject
+          id={id}
+          name={name}
+          description={description}
+          projectId={projectId}
+          onProjectEdit={() => setProjectEditing(!editingProject)}
+        />
+      )}
+      {/* </div> */}
     </div>
   );
 }

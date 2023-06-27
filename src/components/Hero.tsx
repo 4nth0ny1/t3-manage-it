@@ -66,7 +66,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
           />
         )}
       </div>
-      {/* <div className="h-[400px] w-[600px]"> */}
+
       {editingProject && (
         <EditProject
           id={id}
@@ -76,7 +76,6 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
           onProjectEdit={() => setProjectEditing(!editingProject)}
         />
       )}
-      {/* </div> */}
     </div>
   );
 }

@@ -27,19 +27,19 @@ export function CreateTodo() {
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
 
   return (
-    <div className="flex w-[700px] flex-col pb-4">
+    <div className="flex w-[700px] flex-col rounded-2xl border-2 border-gray-500 p-6">
       <div
         onClick={() => setShowForm(!showForm)}
         className="flex flex-row justify-between"
       >
         <h2>Create a Todo</h2>
         <div className="flex flex-col justify-center text-3xl">
-          {showForm ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+          {!showForm ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
         </div>
       </div>
       {showForm && (
         <form
-          className="flex flex-col"
+          className="flex flex-col pt-4"
           onSubmit={(e) => {
             e.preventDefault();
             mutate({ name, description, sprintId, projectId });

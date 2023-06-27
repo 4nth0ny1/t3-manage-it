@@ -38,19 +38,18 @@ const SingleProjectPage: NextPage = () => {
   };
 
   return (
-    <div className="w-full">
-      <Hero
-        id={project?.id}
-        name={project?.name}
-        description={project?.description}
-        projectId={projectId}
-      />
-
-      <div className="flex flex-row">
+    <div className="flex w-full flex-row">
+      <div className="flex w-1/5 flex-col">
+        <Hero
+          id={project?.id}
+          name={project?.name}
+          description={project?.description}
+          projectId={projectId}
+        />
         <SprintMenu upLift={handleClick} />
-        <div className="min-h-screen w-4/5 p-4">
-          <TodoList sprintId={sprintId} />
-        </div>
+      </div>
+      <div className="min-h-screen w-4/5 p-4">
+        <TodoList sprintId={sprintId} />
       </div>
     </div>
   );

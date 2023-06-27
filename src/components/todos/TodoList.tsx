@@ -28,22 +28,28 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="mb-10 flex w-full flex-row justify-between  px-20 py-10">
+      <div className="mb-10 flex w-full flex-col justify-between  px-20 py-6">
         <div className="flex flex-col">
-          <h2 className="text-center text-3xl">{sprint?.name}</h2>
-          <div className="flex flex-row justify-center py-4">
+          <div className="flex flex-row justify-between">
+            <h2 className="text-4xl">{sprint?.name}</h2>
+            {filteredList && (
+              <div className="">
+                <span className="italic">
+                  {doneTodosLength}/{totalTodos} todos completed
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="py-4">
             {filteredList && <ProgressBar percentDone={numberPercent} />}
           </div>
         </div>
-        {filteredList && <CreateTodo />}
+        {filteredList && (
+          <div className="mt-4 flex flex-row justify-center">
+            <CreateTodo />
+          </div>
+        )}
       </div>
-      {filteredList && (
-        <div className="mb-4 flex w-full flex-row justify-end px-20">
-          <span className="italic">
-            {doneTodosLength}/{totalTodos} todos completed
-          </span>
-        </div>
-      )}
       {filteredList ? (
         filteredList?.map((todo) => {
           return <TodoItem key={todo.id} todo={todo} />;

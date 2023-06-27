@@ -53,7 +53,7 @@ export function EditProject({
 
       <CodeMirror
         value={updatedDescription}
-        width="600px"
+        width="100%"
         height="20vh"
         minWidth="100%"
         minHeight="20vh"

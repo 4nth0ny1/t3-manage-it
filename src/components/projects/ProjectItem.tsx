@@ -27,7 +27,7 @@ export function ProjectItem({ project }: ProjectProps) {
       </Link>
       <div className="flex flex-col justify-center text-xl">
         <RiDeleteBin2Fill
-          className="text-pink-400"
+          className="cursor-pointer text-pink-400"
           onClick={() => deleteMutation(id)}
         />
       </div>

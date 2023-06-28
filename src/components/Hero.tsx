@@ -18,7 +18,8 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
   const shortDesc = description?.substring(0, 50);
 
   return (
-    <div className="mb-4 flex flex-col  rounded-3xl bg-base-100 bg-gray-800 p-8">
+    // bg-gray-800
+    <div className="mb-4 flex flex-col rounded-3xl p-8">
       <div className="">
         <div className="">
           <h1

@@ -34,14 +34,14 @@ export function CreateSprint({ resetCreating }: CreateProps) {
       <input
         type="text"
         placeholder="Name"
-        className="input-bordered input my-4 w-full max-w-xs border-gray-300 text-gray-300"
+        className="input-bordered input my-4 w-full max-w-xs border-gray-300 "
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <input
         type="text"
         placeholder="Description"
-        className="input-bordered input mb-4 w-full max-w-xs border-gray-300 text-gray-300"
+        className="input-bordered input mb-4 w-full max-w-xs border-gray-300 "
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />

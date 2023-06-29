@@ -32,6 +32,9 @@ export function Navbar({ switchClick }: ThemeProps) {
               tabIndex={0}
               className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-gray-300 p-2 text-black shadow hover:bg-base-100 hover:text-white"
             >
+              <Link href="/profile">
+                <li>Profile</li>
+              </Link>
               <li>
                 <AuthShowcase />
               </li>

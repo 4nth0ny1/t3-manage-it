@@ -10,7 +10,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("night");
 
   const toggleTheme = () => {
     setTheme(theme === "night" ? "acid" : "night");

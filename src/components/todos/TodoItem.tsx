@@ -51,7 +51,7 @@ export function TodoItem({ todo }: TodoProps) {
                   <input
                     type="checkbox"
                     checked={done}
-                    className="checkbox-success checkbox cursor-pointer"
+                    className="checkbox-accent checkbox cursor-pointer"
                     onChange={(e) =>
                       toggleMutation({ id, done: e.target.checked })
                     }
@@ -78,12 +78,12 @@ export function TodoItem({ todo }: TodoProps) {
                   <div className="flex flex-row gap-4">
                     <AiFillEdit
                       onClick={() => setEditing(!editing)}
-                      className="text-green-400"
+                      className="icon-color-edit"
                     />
                   </div>
                 )}
                 <RiDeleteBin2Fill
-                  className="text-pink-400"
+                  className="icon-color-delete"
                   onClick={() => deleteMutation(id)}
                 />
                 {showDescription ? (

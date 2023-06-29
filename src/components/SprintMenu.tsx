@@ -12,7 +12,7 @@ export function SprintMenu({ upLift }: SprintProps) {
 
   return (
     // bg-gray-800
-    <div className="rounded-3xl  p-8">
+    <div className="menu-background rounded-3xl p-8">
       <h2 className="text-2xl">Sprints</h2>
 
       <SprintList upLift={upLift} />
@@ -20,7 +20,7 @@ export function SprintMenu({ upLift }: SprintProps) {
         <div>
           <div className="flex flex-row justify-end py-4">
             <AiFillMinusCircle
-              className="my-green text-xl"
+              className="icon-color-plus-minus text-xl"
               onClick={() => setCreating(!creating)}
             />
           </div>
@@ -29,7 +29,7 @@ export function SprintMenu({ upLift }: SprintProps) {
       ) : (
         <div className="flex flex-row justify-end py-4">
           <AiFillPlusCircle
-            className="my-green text-xl"
+            className="icon-color-plus-minus text-xl"
             onClick={() => setCreating(!creating)}
           />
         </div>

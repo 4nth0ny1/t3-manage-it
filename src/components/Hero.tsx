@@ -18,8 +18,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
   const shortDesc = description?.substring(0, 50);
 
   return (
-    // bg-gray-800
-    <div className="mb-4 flex flex-col rounded-3xl p-8">
+    <div className="menu-background mb-4 flex flex-col rounded-3xl p-8">
       <div className="">
         <div className="">
           <h1
@@ -57,12 +56,12 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
       <div className="flex flex-row justify-end">
         {editingProject ? (
           <BsBackspace
-            className="text-2xl text-pink-400"
+            className="icon-color-delete text-2xl"
             onClick={() => setProjectEditing(!editingProject)}
           />
         ) : (
           <AiFillEdit
-            className="text-2xl text-green-400"
+            className="icon-color-edit text-2xl"
             onClick={() => setProjectEditing(!editingProject)}
           />
         )}

@@ -23,7 +23,7 @@ export function SprintItem({ sprint, upLift }: SprintProps) {
       <div className="flex flex-row justify-between">
         <p onClick={() => upLift(id)}>{name}</p>
         <button onClick={() => deleteMutation(id)} className="text-error">
-          <RiDeleteBin2Fill className="text-pink-400" />
+          <RiDeleteBin2Fill className="icon-color-delete" />
         </button>
       </div>
     </li>

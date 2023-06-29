@@ -8,7 +8,7 @@ import { api } from "../utils/api";
 import { useRouter } from "next/router";
 
 type ProjectProps = {
-  id: string | undefined;
+  id: string;
   name: string | undefined;
   description: string | undefined;
   projectId: string;
@@ -81,7 +81,7 @@ export function Hero({ id, name, description, projectId }: ProjectProps) {
 
             <RiDeleteBin2Fill
               className="icon-color-delete cursor-pointer text-2xl"
-              onClick={() => deleteMutation(id as string)}
+              onClick={() => deleteMutation({ id, projectId })}
             />
           </div>
         )}

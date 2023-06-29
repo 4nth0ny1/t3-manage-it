@@ -90,8 +90,8 @@ model Sprint {
     updatedAt   DateTime @default(now())
     user        User     @relation(fields: [userId], references: [id])
     userId      String
-    project     Project? @relation(fields: [projectId], references: [id])
-    projectId   String?
+    project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    projectId   String
     todos       Todo[]
 
     @@index([userId])
@@ -107,10 +107,10 @@ model Todo {
     updatedAt   DateTime @default(now())
     user        User     @relation(fields: [userId], references: [id])
     userId      String
-    project     Project? @relation(fields: [projectId], references: [id])
-    projectId   String?
-    sprint      Sprint?  @relation(fields: [sprintId], references: [id])
-    sprintId    String?
+    project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    projectId   String
+    sprint      Sprint   @relation(fields: [sprintId], references: [id], onDelete: Cascade)
+    sprintId    String
 
     @@index([userId])
     @@index([projectId])

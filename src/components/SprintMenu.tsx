@@ -11,7 +11,6 @@ export function SprintMenu({ upLift }: SprintProps) {
   const [creating, setCreating] = useState(false);
 
   return (
-    // bg-gray-800
     <div className="menu-background rounded-3xl p-8">
       <h2 className="text-2xl">Sprints</h2>
 
@@ -20,7 +19,7 @@ export function SprintMenu({ upLift }: SprintProps) {
         <div>
           <div className="flex flex-row justify-end py-4">
             <AiFillMinusCircle
-              className="icon-color-plus-minus text-xl"
+              className="icon-color-delete text-xl"
               onClick={() => setCreating(!creating)}
             />
           </div>

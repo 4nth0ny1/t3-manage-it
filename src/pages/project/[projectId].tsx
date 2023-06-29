@@ -41,7 +41,7 @@ const SingleProjectPage: NextPage = () => {
     <div className="flex w-full flex-row p-8">
       <div className="flex w-1/5 flex-col">
         <Hero
-          id={project?.id}
+          id={project?.id as string}
           name={project?.name}
           description={project?.description}
           projectId={projectId}

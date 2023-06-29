@@ -54,13 +54,27 @@ export const projectRouter = createTRPCRouter({
   }), 
 
   deleteProject: protectedProcedure
-  .input(z.string())
-  .mutation(({ctx, input}) => {
-    return ctx.prisma.project.delete({
+  .input(z.object({projectId: z.string(), id: z.string()}))
+  .mutation(async ({ctx, input}) => {
+    return await ctx.prisma.project.delete({
       where: {
-        id: input
+        id: input.id
       }
     })
+    // const deleteSprints = ctx.prisma.sprint.deleteMany({
+    //   where: {
+    //     projectId: input.projectId,
+    //   },
+    // })
+    
+    // const deleteProject = ctx.prisma.project.delete({
+    //   where: {
+    //     id: input.id,
+    //   },
+    // })
+    
+    // const transaction = await ctx.prisma.$transaction([deleteSprints, deleteProject])
+    // return transaction
   })
 
 });

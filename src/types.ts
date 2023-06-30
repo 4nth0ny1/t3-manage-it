@@ -4,6 +4,9 @@ import type {AppRouter} from './server/api/root'
 
 type RouterOutputs = inferRouterOutputs<AppRouter>;
 
+type allUsersOutput = RouterOutputs['user']['getAllUsers']
+export type User = allUsersOutput[number]
+
 type allProjectsOutput = RouterOutputs['project']['getAllProjects']
 export type Project = allProjectsOutput[number]
 

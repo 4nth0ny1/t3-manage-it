@@ -54,7 +54,11 @@ function AuthShowcase() {
       </p>
       <button
         className="btn-accent btn rounded-full px-10 py-3 font-semibold no-underline transition"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
+        onClick={
+          sessionData
+            ? () => void signOut({ callbackUrl: "/" })
+            : () => void signIn()
+        }
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>

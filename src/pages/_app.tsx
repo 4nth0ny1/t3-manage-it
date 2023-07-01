@@ -13,7 +13,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
   const [theme, setTheme] = useState("night");
 
   const toggleTheme = () => {
-    setTheme(theme === "night" ? "acid" : "night");
+    if (theme === "night") {
+      setTheme("acid");
+    } else {
+      setTheme("night");
+    }
   };
 
   useEffect(() => {
@@ -23,8 +27,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
   return (
     <SessionProvider session={session}>
-      <Navbar switchClick={toggleTheme} />
-      <Component {...pageProps} />
+      <Navbar />
+      <Component theme={theme} switchClick={toggleTheme} {...pageProps} />
     </SessionProvider>
   );
 };

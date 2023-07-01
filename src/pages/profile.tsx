@@ -2,15 +2,35 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { api } from "~/utils/api";
 import type { User } from "../types";
+import { useEffect } from "react";
 
-export default function ProfilePage() {
+type ThemeProps = {
+  switchClick: () => void;
+  theme: string;
+};
+
+export default function ProfilePage({ switchClick, theme }: ThemeProps) {
   const { data: sessionData } = useSession();
   const userId = sessionData?.user.id as string;
+
+  const ctx = api.useContext();
 
   const { data: user }: { data: User | undefined | null } =
     api.user.getUserProfile.useQuery({
       userId,
     });
+
+  const { mutate: toggleThemeMutation } = api.user.toggleTheme.useMutation({
+    onSettled: async () => {
+      switchClick();
+      await ctx.user.getUserProfile.invalidate();
+    },
+  });
+
+  useEffect(() => {
+    const html = document.querySelector("html") as HTMLHtmlElement;
+    html.setAttribute("data-theme", user?.theme as string);
+  }, [user?.theme]);
 
   return (
     <div className="mt-8 flex flex-col items-center justify-center gap-8">
@@ -25,11 +45,11 @@ export default function ProfilePage() {
       <h2>{sessionData?.user.email}</h2>
       {user?.theme}
 
-      {/* instead of click lifting up state change to acid/night theme 
-        create toggleMutation
-        remove from navbar
-      */}
-      <input type="checkbox" className="toggle mx-4" />
+      <input
+        type="checkbox"
+        className="toggle mx-4"
+        onClick={() => toggleThemeMutation({ userId, theme })}
+      />
     </div>
   );
 }

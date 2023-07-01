@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { api } from "../../utils/api";
 import { type NextPage } from "next";
@@ -6,11 +7,25 @@ import { Hero } from "../../components/Hero";
 import { SprintMenu } from "../../components/SprintMenu";
 import { TodoList } from "../../components/todos/TodoList";
 import type { Project } from "../../types";
+import type { User } from "../../types";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
   const [sprintId, setSprintId] = useState("");
+
+  const { data: sessionData } = useSession();
+  const userId = sessionData?.user.id as string;
+
+  const { data: user }: { data: User | undefined | null } =
+    api.user.getUserProfile.useQuery({
+      userId,
+    });
+
+  useEffect(() => {
+    const html = document.querySelector("html") as HTMLHtmlElement;
+    html.setAttribute("data-theme", user?.theme as string);
+  }, [user?.theme]);
 
   useEffect(() => {
     if (!router.isReady) return;

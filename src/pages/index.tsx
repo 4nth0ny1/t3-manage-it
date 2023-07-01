@@ -2,9 +2,23 @@ import Head from "next/head";
 import { ProjectList } from "../components/projects/ProjectList";
 import { useSession } from "next-auth/react";
 import { UnsignedIndexPage } from "../components/UnsignedIndex";
+import { api } from "~/utils/api";
+import type { User } from "../types";
+import { useEffect } from "react";
 
 export default function Home() {
   const { data: sessionData } = useSession();
+  const userId = sessionData?.user.id as string;
+
+  const { data: user }: { data: User | undefined | null } =
+    api.user.getUserProfile.useQuery({
+      userId,
+    });
+
+  useEffect(() => {
+    const html = document.querySelector("html") as HTMLHtmlElement;
+    html.setAttribute("data-theme", user?.theme as string);
+  }, [user?.theme]);
 
   return (
     <>

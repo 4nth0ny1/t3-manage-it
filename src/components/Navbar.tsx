@@ -2,11 +2,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
-type ThemeProps = {
-  switchClick: () => void;
-};
-
-export function Navbar({ switchClick }: ThemeProps) {
+export function Navbar() {
   const { data: sessionData } = useSession();
   return (
     <div className="navbar bg-base-100">
@@ -44,7 +40,6 @@ export function Navbar({ switchClick }: ThemeProps) {
       ) : (
         <AuthShowcase />
       )}
-      <input onClick={switchClick} type="checkbox" className="toggle mx-4" />
     </div>
   );
 }

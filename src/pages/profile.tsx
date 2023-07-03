@@ -43,7 +43,6 @@ export default function ProfilePage({ switchClick, theme }: ThemeProps) {
         className="rounded"
       />
       <h2>{sessionData?.user.email}</h2>
-      {user?.theme}
 
       <input
         type="checkbox"

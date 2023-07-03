@@ -26,6 +26,7 @@ export function CreateProject() {
       <input
         type="text"
         placeholder="Name"
+        required
         className="input-bordered input mb-4 w-full max-w-xs border-gray-400 text-gray-400"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -33,6 +34,7 @@ export function CreateProject() {
       <input
         type="text"
         placeholder="Description"
+        required
         className="input-bordered input mb-4 w-full max-w-xs border-gray-400 text-gray-400"
         value={description}
         onChange={(e) => setDescription(e.target.value)}

@@ -49,6 +49,7 @@ export function CreateTodo() {
             <input
               type="text"
               placeholder="Name"
+              required
               className="input-bordered input my-4 w-full border-gray-300"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -56,6 +57,7 @@ export function CreateTodo() {
             <input
               type="text"
               placeholder="Description"
+              required
               className="input-bordered input mb-4 w-full border-b border-gray-300"
               value={description}
               onChange={(e) => setDescription(e.target.value)}

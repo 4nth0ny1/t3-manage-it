@@ -31,7 +31,10 @@ export function TodoList({ sprintId }: ProjectIdProps) {
       <div className="mb-10 flex w-full flex-col justify-between  px-20 py-6">
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
-            <h2 className="text-4xl">{sprint?.name}</h2>
+            <div className="flex flex-col">
+              <h2 className="text-4xl">{sprint?.name}</h2>
+              <p className="text-xl italic">{sprint?.description}</p>
+            </div>
             {filteredList && (
               <div className="">
                 <span className="italic">

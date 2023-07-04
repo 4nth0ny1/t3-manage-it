@@ -21,7 +21,7 @@ const SingleProjectPage: NextPage = () => {
     api.user.getUserProfile.useQuery({
       userId,
     });
-
+  //test
   useEffect(() => {
     const html = document.querySelector("html") as HTMLHtmlElement;
     html.setAttribute("data-theme", user?.theme as string);

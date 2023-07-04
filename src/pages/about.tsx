@@ -49,6 +49,11 @@ export default function AboutPage() {
             being used in basic ways. I am using components from DaisyUI for the
             Navbar, Inputs, Buttons, and Progress Bar.
           </p>
+          <br></br>
+          <p>
+            use the carousel or something similar to show screen shots of the
+            current state.{" "}
+          </p>
         </div>
       </div>
     </>

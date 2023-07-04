@@ -34,7 +34,7 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="mb-10 flex w-full flex-col justify-between  px-20 py-6">
+      <div className="flex w-full flex-col justify-between  px-20">
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">

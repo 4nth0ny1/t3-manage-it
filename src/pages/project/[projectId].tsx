@@ -63,7 +63,7 @@ const SingleProjectPage: NextPage = () => {
         />
         <SprintMenu upLift={handleClick} />
       </div>
-      <div className="min-h-screen w-4/5 p-4">
+      <div className="min-h-screen w-4/5 px-4">
         <TodoList sprintId={sprintId} />
       </div>
     </div>

@@ -6,6 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { useState } from "react";
 import { EditSprint } from "../sprints/EditSprint";
 import { BsBackspace } from "react-icons/bs";
+import { ProgressBarLine } from "../ProgressBarLine";
 
 type ProjectIdProps = {
   sprintId: string;
@@ -34,7 +35,8 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <div className="flex flex-row flex-wrap text-2xl">
-      <div className="flex w-full flex-col justify-between  px-20">
+      <ProgressBarLine percentDone={numberPercent} />
+      <div className="mt-6 flex w-full flex-col justify-between px-20">
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
@@ -75,9 +77,9 @@ export function TodoList({ sprintId }: ProjectIdProps) {
                 <span className="italic">
                   {doneTodosLength}/{totalTodos} todos completed
                 </span>
-                <div className="py-4">
+                {/* <div className="py-4">
                   {filteredList && <ProgressBar percentDone={numberPercent} />}
-                </div>
+                </div> */}
               </div>
             )}
           </div>

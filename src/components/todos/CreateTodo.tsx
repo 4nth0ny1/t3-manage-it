@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 
 export function CreateTodo() {
   const [name, setName] = useState("");
@@ -27,14 +27,14 @@ export function CreateTodo() {
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
 
   return (
-    <div className="flex w-[700px] flex-col rounded-2xl border-2 border-gray-500 p-6">
+    <div className="flex w-[81%] flex-col border-b py-6">
       <div
         onClick={() => setShowForm(!showForm)}
-        className="flex flex-row justify-between"
+        className="flex flex-row justify-between px-6"
       >
         <h2>Create a Todo</h2>
         <div className="flex flex-col justify-center text-3xl">
-          {!showForm ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+          {!showForm ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
         </div>
       </div>
       {showForm && (
@@ -80,7 +80,7 @@ export function CreateTodo() {
               })}
             </select>
           </div>
-          <div className=" flex flex-row justify-end">
+          <div className="flex flex-row justify-end">
             <button className="btn-accent btn w-[25%]">Create</button>
           </div>
         </form>

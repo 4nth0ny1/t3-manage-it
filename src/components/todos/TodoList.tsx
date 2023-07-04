@@ -2,12 +2,17 @@ import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { CreateTodo } from "../../components/todos/CreateTodo";
 import { ProgressBar } from "~/components/ProgressBar";
+import { AiFillEdit } from "react-icons/ai";
+import { useState } from "react";
+import { EditSprint } from "../sprints/EditSprint";
 
 type ProjectIdProps = {
   sprintId: string;
 };
 
 export function TodoList({ sprintId }: ProjectIdProps) {
+  const [editingSprint, setSprintEditing] = useState(false);
+
   const { data: sprint } = api.sprint.getOneSprint.useQuery({ sprintId });
 
   const { data: allTodos } = api.todo.getAllTodos.useQuery({ sprintId });
@@ -32,7 +37,24 @@ export function TodoList({ sprintId }: ProjectIdProps) {
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-              <h2 className="text-4xl">{sprint?.name}</h2>
+              <div className="flex flex-row gap-4">
+                <h2 className="text-4xl">{sprint?.name}</h2>
+                {filteredList && (
+                  <AiFillEdit
+                    className="icon-color-edit text-2xl"
+                    onClick={() => setSprintEditing(!editingSprint)}
+                  />
+                )}
+                {editingSprint && (
+                  <EditSprint
+                    id={sprint?.id}
+                    name={sprint?.name}
+                    description={sprint?.description}
+                    sprintId={sprintId}
+                    onSprintEdit={() => setSprintEditing(!editingSprint)}
+                  />
+                )}
+              </div>
               <p className="text-xl italic">{sprint?.description}</p>
             </div>
             {filteredList && (

@@ -5,6 +5,7 @@ import { ProgressBar } from "~/components/ProgressBar";
 import { AiFillEdit } from "react-icons/ai";
 import { useState } from "react";
 import { EditSprint } from "../sprints/EditSprint";
+import { BsBackspace } from "react-icons/bs";
 
 type ProjectIdProps = {
   sprintId: string;
@@ -37,36 +38,48 @@ export function TodoList({ sprintId }: ProjectIdProps) {
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-              <div className="flex flex-row gap-4">
-                <h2 className="text-4xl">{sprint?.name}</h2>
+              <div className="flex flex-row gap-12">
                 {filteredList && (
-                  <AiFillEdit
-                    className="icon-color-edit text-2xl"
-                    onClick={() => setSprintEditing(!editingSprint)}
-                  />
+                  <div className="flex flex-row gap-12">
+                    <div>
+                      <h2 className="text-4xl">{sprint?.name}</h2>
+                      <p className="text-xl italic">{sprint?.description}</p>
+                    </div>
+                    {!editingSprint && (
+                      <AiFillEdit
+                        className="icon-color-edit text-2xl"
+                        onClick={() => setSprintEditing(!editingSprint)}
+                      />
+                    )}
+                  </div>
                 )}
                 {editingSprint && (
-                  <EditSprint
-                    id={sprint?.id}
-                    name={sprint?.name}
-                    description={sprint?.description}
-                    sprintId={sprintId}
-                    onSprintEdit={() => setSprintEditing(!editingSprint)}
-                  />
+                  <div>
+                    <BsBackspace
+                      className="icon-color-delete text-2xl"
+                      onClick={() => setSprintEditing(!editingSprint)}
+                    />
+                    <EditSprint
+                      id={sprint?.id as string}
+                      name={sprint?.name}
+                      description={sprint?.description}
+                      sprintId={sprintId}
+                      onSprintEdit={() => setSprintEditing(!editingSprint)}
+                    />
+                  </div>
                 )}
               </div>
-              <p className="text-xl italic">{sprint?.description}</p>
             </div>
             {filteredList && (
-              <div className="">
+              <div className="text-center">
                 <span className="italic">
                   {doneTodosLength}/{totalTodos} todos completed
                 </span>
+                <div className="py-4">
+                  {filteredList && <ProgressBar percentDone={numberPercent} />}
+                </div>
               </div>
             )}
-          </div>
-          <div className="py-4">
-            {filteredList && <ProgressBar percentDone={numberPercent} />}
           </div>
         </div>
         {filteredList && (

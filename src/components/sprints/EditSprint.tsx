@@ -34,7 +34,7 @@ export function EditSprint({
 
   return (
     <form
-      className="flex w-full flex-col gap-4 pt-10"
+      className="mb-8 flex w-full flex-col gap-4 pt-10"
       onSubmit={(e) => {
         e.preventDefault();
         updateMutation({

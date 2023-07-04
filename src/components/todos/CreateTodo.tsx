@@ -66,8 +66,9 @@ export function CreateTodo() {
             <select
               className="select w-full max-w-xs border-gray-300"
               onChange={(e) => setSelectValue(e.target.value)}
+              required
             >
-              <option disabled selected>
+              <option value="" disabled selected>
                 Pick Sprint
               </option>
               {sprints?.map((sprint) => {

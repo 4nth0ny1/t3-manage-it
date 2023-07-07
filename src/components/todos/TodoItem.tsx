@@ -31,8 +31,6 @@ export function TodoItem({ todo }: TodoProps) {
       // Snapshot the previous value
       const previousTodos = ctx.todo.getAllTodos.getData({ sprintId });
 
-      console.log(previousTodos);
-
       // Optimistically update to the new value
       ctx.todo.getAllTodos.setData({ sprintId }, (prev) => {
         if (!prev) return previousTodos;
@@ -41,6 +39,11 @@ export function TodoItem({ todo }: TodoProps) {
 
       // Return a context object with the snapshotted value
       return { previousTodos };
+    },
+    onError: (err, newTodo, context) => {
+      toast.error(`An error occured when deleting todo`);
+      if (!context) return;
+      ctx.todo.getAllTodos.setData({ sprintId }, () => context.previousTodos);
     },
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();

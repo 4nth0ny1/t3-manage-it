@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { EditTodo } from "../todos/EditTodo";
 import ReactMarkdown from "react-markdown";
+import toast, { Toaster } from "react-hot-toast";
 
 type TodoProps = {
   todo: Todo;
@@ -29,6 +30,11 @@ export function TodoItem({ todo }: TodoProps) {
   });
 
   const { mutate: toggleMutation } = api.todo.toggleTodo.useMutation({
+    onSuccess: (err, { done }) => {
+      if (done) {
+        toast.success("Todo completed 🎉");
+      }
+    },
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();
     },
@@ -110,6 +116,7 @@ export function TodoItem({ todo }: TodoProps) {
           </div>
         </li>
       )}
+      <Toaster />
     </Fragment>
   );
 }

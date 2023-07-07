@@ -51,10 +51,41 @@ export function TodoItem({ todo }: TodoProps) {
   });
 
   const { mutate: toggleMutation } = api.todo.toggleTodo.useMutation({
+    onMutate: async ({ id, done }) => {
+      // Cancel any outgoing refetches so they don't overwrite our optimistic update
+      await ctx.todo.getAllTodos.cancel();
+
+      // Snapshot the previous value
+      const previousTodos = ctx.todo.getAllTodos.getData({ sprintId });
+
+      // Optimistically update to the new value
+      ctx.todo.getAllTodos.setData({ sprintId }, (prev) => {
+        if (!prev) return previousTodos;
+        return prev.map((t) => {
+          if (t.id === id) {
+            return {
+              ...t,
+              done,
+            };
+          }
+          return t;
+        });
+      });
+
+      // Return a context object with the snapshotted value
+      return { previousTodos };
+    },
     onSuccess: (err, { done }) => {
       if (done) {
         toast.success("Todo completed 🎉");
       }
+    },
+    onError: (err, done, context) => {
+      toast.error(
+        `An error occured when marking todo as ${done ? "done" : "undone"}`
+      );
+      if (!context) return;
+      ctx.todo.getAllTodos.setData({ sprintId }, () => context.previousTodos);
     },
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();

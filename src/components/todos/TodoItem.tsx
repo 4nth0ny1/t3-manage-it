@@ -24,6 +24,24 @@ export function TodoItem({ todo }: TodoProps) {
   const ctx = api.useContext();
 
   const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
+    onMutate: async (deleteId) => {
+      // Cancel any outgoing refetches so they don't overwrite our optimistic update
+      await ctx.todo.getAllTodos.cancel();
+
+      // Snapshot the previous value
+      const previousTodos = ctx.todo.getAllTodos.getData({ sprintId });
+
+      console.log(previousTodos);
+
+      // Optimistically update to the new value
+      ctx.todo.getAllTodos.setData({ sprintId }, (prev) => {
+        if (!prev) return previousTodos;
+        return prev.filter((t) => t.id !== deleteId);
+      });
+
+      // Return a context object with the snapshotted value
+      return { previousTodos };
+    },
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();
     },

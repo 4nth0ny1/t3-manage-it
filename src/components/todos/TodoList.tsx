@@ -1,7 +1,6 @@
 import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { CreateTodo } from "../../components/todos/CreateTodo";
-import { ProgressBar } from "~/components/ProgressBar";
 import { AiFillEdit } from "react-icons/ai";
 import { useState } from "react";
 import { EditSprint } from "../sprints/EditSprint";

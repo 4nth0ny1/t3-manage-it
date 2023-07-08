@@ -20,7 +20,7 @@ export function CreateTodo() {
   const projectId = router.query.projectId as string;
 
   const { mutate } = api.todo.createTodo.useMutation({
-    onMutate: async (newTodo) => {
+    onMutate: async () => {
       // Cancel any outgoing refetches so they don't overwrite our optimistic update
       await ctx.todo.getAllTodos.cancel();
 

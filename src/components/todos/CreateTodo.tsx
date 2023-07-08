@@ -2,6 +2,8 @@ import { useState } from "react";
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+import type { Todo } from "../../types";
+import { useSession } from "next-auth/react";
 
 export function CreateTodo() {
   const [name, setName] = useState("");
@@ -12,11 +14,43 @@ export function CreateTodo() {
   const sprintId = selectValue;
 
   const ctx = api.useContext();
-
+  const { data: sessionData } = useSession();
+  const userId = sessionData?.user.id;
   const router = useRouter();
   const projectId = router.query.projectId as string;
 
   const { mutate } = api.todo.createTodo.useMutation({
+    onMutate: async (newTodo) => {
+      // Cancel any outgoing refetches so they don't overwrite our optimistic update
+      await ctx.todo.getAllTodos.cancel();
+
+      // Snapshot the previous value
+      const previousTodos = ctx.todo.getAllTodos.getData({ sprintId });
+
+      // Optimistically update to the new value
+      ctx.todo.getAllTodos.setData({ sprintId }, (prev) => {
+        const optimisticTodo: Todo = {
+          id: "optimistic-todo-id",
+          name: name, // 'placeholder'
+          description: description,
+          done: false,
+          sprintId: sprintId,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: userId as string,
+          projectId: projectId,
+        };
+        if (!prev) return [optimisticTodo];
+        return [...prev, optimisticTodo];
+      });
+
+      // Clear input
+      setName("");
+      setDescription("");
+
+      // Return a context object with the snapshotted value
+      return { previousTodos };
+    },
     onSettled: async () => {
       await ctx.todo.getAllTodos.invalidate();
       setName("");

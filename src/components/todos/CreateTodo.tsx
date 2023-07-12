@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import type { Todo } from "../../types";
 import { useSession } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 
 export function CreateTodo() {
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ export function CreateTodo() {
       return { previousTodos };
     },
     onSettled: async () => {
+      toast.success("Todo created 🎉");
       await ctx.todo.getAllTodos.invalidate();
       setName("");
       setDescription("");

@@ -5,6 +5,7 @@ import { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
+import toast, { Toaster } from "react-hot-toast";
 
 type TodoProps = {
   todo: Todo;
@@ -20,6 +21,7 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
 
   const { mutate: updateMutation } = api.todo.updateTodo.useMutation({
     onSettled: async () => {
+      toast.success(`${name} updated`);
       await ctx.todo.getAllTodos.invalidate();
       onEdit();
     },

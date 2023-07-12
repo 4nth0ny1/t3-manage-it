@@ -46,6 +46,7 @@ export function TodoItem({ todo }: TodoProps) {
       ctx.todo.getAllTodos.setData({ sprintId }, () => context.previousTodos);
     },
     onSettled: async () => {
+      toast.success(`${name} deleted`);
       await ctx.todo.getAllTodos.invalidate();
     },
   });

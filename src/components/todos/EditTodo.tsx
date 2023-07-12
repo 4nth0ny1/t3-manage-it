@@ -49,7 +49,7 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
       <CodeMirror
         value={updatedDescription}
         placeholder={description}
-        width="500px"
+        width="100%"
         height="30vh"
         minWidth="100%"
         minHeight="30vh"
@@ -57,7 +57,7 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
           markdown({ base: markdownLanguage, codeLanguages: languages }),
         ]}
         onChange={(value) => setUpdatedDescription(value)}
-        className="border border-gray-300 text-lg"
+        className="w-full border border-gray-300 text-lg"
       />
       <div className="flex flex-row justify-end">
         <button className="btn-primary btn w-[25%] rounded-xl">

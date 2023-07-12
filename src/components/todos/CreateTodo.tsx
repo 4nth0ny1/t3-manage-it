@@ -63,7 +63,7 @@ export function CreateTodo() {
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
 
   return (
-    <div className="flex w-[81%] flex-col border-b py-6">
+    <div className="flex flex-col border-b py-6 md:w-[81%]">
       <div
         onClick={() => setShowForm(!showForm)}
         className="flex flex-row justify-between px-6"
@@ -116,7 +116,7 @@ export function CreateTodo() {
               })}
             </select>
           </div>
-          <div className="flex flex-row justify-end">
+          <div className="mt-4 flex flex-row justify-end">
             <button className="btn-accent btn w-[25%]">Create</button>
           </div>
         </form>

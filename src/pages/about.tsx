@@ -1,12 +1,12 @@
 export default function AboutPage() {
   return (
     <>
-      <div className="p-32">
-        <div className="pb-20">
-          <h2 className="text-end text-4xl">T3 Manage It - MVP</h2>
-          <p className="text-end italic">Written on: 07/03/2023</p>
+      <div className="md:p-22 w-full p-6">
+        <div className="pb-10 md:pb-20">
+          <h2 className="text-4xl md:text-end">T3 Manage It - MVP</h2>
+          <p className="italic md:text-end">Written on: 07/03/2023</p>
         </div>
-        <div className="px-32 text-xl">
+        <div className="w-full text-xl md:px-32">
           <p>
             This is the first iteration of this app, and before I get too far, I
             wanted to document where am I right now.

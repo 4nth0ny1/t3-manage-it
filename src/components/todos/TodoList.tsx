@@ -33,9 +33,10 @@ export function TodoList({ sprintId }: ProjectIdProps) {
   });
 
   return (
-    <div className="flex flex-row flex-wrap text-2xl">
+    <div className="mt-6 flex flex-row flex-wrap text-2xl md:mt-0">
       <ProgressBarLine percentDone={numberPercent} />
-      <div className="mt-6 flex w-full flex-col justify-between px-20">
+
+      <div className="mt-6 flex w-full flex-col justify-between md:px-20">
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">

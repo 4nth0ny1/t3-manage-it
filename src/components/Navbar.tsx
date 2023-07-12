@@ -5,7 +5,7 @@ import Image from "next/image";
 export function Navbar() {
   const { data: sessionData } = useSession();
   return (
-    <div className="navbar bg-base-100 px-6">
+    <div className="navbar bg-base-100 md:px-6">
       <div className="flex-1">
         <Link href="/" className="btn-ghost btn text-xl normal-case">
           <span className="text-[hsl(280,100%,70%)]">T3</span> Manage It

@@ -53,8 +53,8 @@ const SingleProjectPage: NextPage = () => {
   };
 
   return (
-    <div className="flex w-full flex-row p-8">
-      <div className="flex w-1/5 flex-col">
+    <div className="flex w-full flex-col p-8 md:flex-row">
+      <div className="flex w-full flex-col md:w-1/5">
         <Hero
           id={project?.id as string}
           name={project?.name}
@@ -63,7 +63,7 @@ const SingleProjectPage: NextPage = () => {
         />
         <SprintMenu upLift={handleClick} />
       </div>
-      <div className="min-h-screen w-4/5 px-4">
+      <div className="min-h-screen w-full md:w-4/5 md:px-4">
         <TodoList sprintId={sprintId} />
       </div>
     </div>

@@ -97,13 +97,13 @@ export function TodoItem({ todo }: TodoProps) {
     <Fragment>
       {editing ? (
         <div className="flex w-full flex-row justify-center pb-4">
-          <div className="flex w-[70%] flex-row justify-center">
+          <div className="flex w-full flex-row justify-center md:w-[70%]">
             <EditTodo todo={todo} onEdit={() => setEditing(!editing)} />
           </div>
         </div>
       ) : (
         <li className="flex w-full flex-row justify-center">
-          <div className="flex w-[70%] flex-col justify-between border-b py-4">
+          <div className="flex w-full flex-col justify-between border-b py-4 md:w-[70%]">
             <div className="flex flex-row justify-between">
               <div className="flex flex-row gap-4">
                 <div className="form-control">
@@ -145,15 +145,17 @@ export function TodoItem({ todo }: TodoProps) {
                   className="icon-color-delete"
                   onClick={() => deleteMutation(id)}
                 />
-                {showDescription ? (
-                  <IoMdArrowDropup
-                    onClick={() => setShowDescription(!showDescription)}
-                  />
-                ) : (
-                  <IoMdArrowDropdown
-                    onClick={() => setShowDescription(!showDescription)}
-                  />
-                )}
+                <div className="hidden md:inline-block">
+                  {showDescription ? (
+                    <IoMdArrowDropup
+                      onClick={() => setShowDescription(!showDescription)}
+                    />
+                  ) : (
+                    <IoMdArrowDropdown
+                      onClick={() => setShowDescription(!showDescription)}
+                    />
+                  )}
+                </div>
               </div>
             </div>
             <p className="text-lg font-thin italic">

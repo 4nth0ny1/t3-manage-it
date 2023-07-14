@@ -5,6 +5,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import type { Todo } from "../../types";
 import { useSession } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 export function CreateTodo() {
   const [name, setName] = useState("");
@@ -62,6 +63,11 @@ export function CreateTodo() {
 
   const { data: sprints } = api.sprint.getAllSprints.useQuery({ projectId });
 
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
+
   return (
     <div className="flex flex-col border-b py-6 md:w-[81%]">
       <div
@@ -82,7 +88,11 @@ export function CreateTodo() {
           }}
         >
           <div>
-            <input
+            <motion.input
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 2 }}
+              variants={variants}
               type="text"
               placeholder="Name"
               required
@@ -90,7 +100,11 @@ export function CreateTodo() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <input
+            <motion.input
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 2 }}
+              variants={variants}
               type="text"
               placeholder="Description"
               required
@@ -99,7 +113,11 @@ export function CreateTodo() {
               onChange={(e) => setDescription(e.target.value)}
             />
 
-            <select
+            <motion.select
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 2 }}
+              variants={variants}
               className="select w-full max-w-xs border-gray-300"
               onChange={(e) => setSelectValue(e.target.value)}
               required
@@ -114,10 +132,18 @@ export function CreateTodo() {
                   </option>
                 );
               })}
-            </select>
+            </motion.select>
           </div>
           <div className="mt-4 flex flex-row justify-end">
-            <button className="btn-accent btn w-[25%]">Create</button>
+            <motion.button
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 2 }}
+              variants={variants}
+              className="btn-accent btn w-[25%]"
+            >
+              Create
+            </motion.button>
           </div>
         </form>
       )}

@@ -1,6 +1,7 @@
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 type CreateProps = {
   resetCreating: () => void;
@@ -24,6 +25,11 @@ export function CreateSprint({ resetCreating }: CreateProps) {
     },
   });
 
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
+
   return (
     <form
       onSubmit={(e) => {
@@ -31,7 +37,11 @@ export function CreateSprint({ resetCreating }: CreateProps) {
         mutate({ name, description, projectId });
       }}
     >
-      <input
+      <motion.input
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 2 }}
+        variants={variants}
         type="text"
         placeholder="Name"
         required
@@ -39,7 +49,11 @@ export function CreateSprint({ resetCreating }: CreateProps) {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <input
+      <motion.input
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 2 }}
+        variants={variants}
         type="text"
         placeholder="Description"
         required
@@ -48,7 +62,15 @@ export function CreateSprint({ resetCreating }: CreateProps) {
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="flex flex-row justify-end">
-        <button className="btn-accent btn">Create</button>
+        <motion.button
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 2 }}
+          variants={variants}
+          className="btn-accent btn"
+        >
+          Create
+        </motion.button>
       </div>
     </form>
   );

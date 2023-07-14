@@ -1,5 +1,6 @@
 import type { Project } from "../../types";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type ProjectProps = {
   project: Project;
@@ -8,12 +9,23 @@ type ProjectProps = {
 export function ProjectItem({ project }: ProjectProps) {
   const { id, name, description, createdAt } = project;
 
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
+
   return (
     <div className="flex flex-row justify-center gap-1 p-2 md:p-4">
       <Link href={`/project/${id}`}>
-        <button className="btn-accent btn flex flex-col  text-black">
+        <motion.button
+          className="btn-accent btn flex flex-col  text-black"
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 2 }}
+          variants={variants}
+        >
           <div>{name}</div>
-        </button>
+        </motion.button>
       </Link>
     </div>
   );

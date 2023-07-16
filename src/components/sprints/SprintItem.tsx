@@ -2,6 +2,7 @@ import { api } from "~/utils/api";
 import type { Sprint } from "../../types";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { ProgressBarLine } from "../ProgressBarLine";
 
 type SprintProps = {
   sprint: Sprint;
@@ -29,6 +30,7 @@ export function SprintItem({ sprint, upLift }: SprintProps) {
           <RiDeleteBin2Fill className="icon-color-delete" />
         </button>
       </div>
+      <ProgressBarLine height="h-[10px]" />
     </li>
   );
 }

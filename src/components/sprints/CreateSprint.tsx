@@ -40,7 +40,7 @@ export function CreateSprint({ resetCreating }: CreateProps) {
       <motion.input
         initial="hidden"
         animate="visible"
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
         variants={variants}
         type="text"
         placeholder="Name"
@@ -52,7 +52,7 @@ export function CreateSprint({ resetCreating }: CreateProps) {
       <motion.input
         initial="hidden"
         animate="visible"
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
         variants={variants}
         type="text"
         placeholder="Description"
@@ -65,7 +65,7 @@ export function CreateSprint({ resetCreating }: CreateProps) {
         <motion.button
           initial="hidden"
           animate="visible"
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
           variants={variants}
           className="btn-accent btn"
         >

@@ -91,7 +91,7 @@ export function CreateTodo() {
             <motion.input
               initial="hidden"
               animate="visible"
-              transition={{ duration: 2 }}
+              transition={{ duration: 1 }}
               variants={variants}
               type="text"
               placeholder="Name"
@@ -103,7 +103,7 @@ export function CreateTodo() {
             <motion.input
               initial="hidden"
               animate="visible"
-              transition={{ duration: 2 }}
+              transition={{ duration: 1 }}
               variants={variants}
               type="text"
               placeholder="Description"
@@ -116,7 +116,7 @@ export function CreateTodo() {
             <motion.select
               initial="hidden"
               animate="visible"
-              transition={{ duration: 2 }}
+              transition={{ duration: 1 }}
               variants={variants}
               className="select w-full max-w-xs border-gray-300"
               onChange={(e) => setSelectValue(e.target.value)}
@@ -138,7 +138,7 @@ export function CreateTodo() {
             <motion.button
               initial="hidden"
               animate="visible"
-              transition={{ duration: 2 }}
+              transition={{ duration: 1 }}
               variants={variants}
               className="btn-accent btn w-[25%]"
             >

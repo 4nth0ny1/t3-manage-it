@@ -29,7 +29,7 @@ export function Navbar() {
             </label>
             <ul
               tabIndex={0}
-              className="w-52p-2 dropdown-content menu rounded-box menu-sm z-[1] mt-3 shadow hover:bg-base-100 hover:text-gray-500"
+              className="w-52p-2 dropdown-content menu rounded-box menu-sm z-[1] mt-3 bg-base-100 shadow hover:bg-base-100 hover:text-gray-500"
             >
               <Link href="/profile">
                 <li>Profile</li>

@@ -22,11 +22,7 @@ export function SprintList({ upLift }: SprintProps) {
   return (
     <ul className="flex flex-col text-2xl">
       {sprints?.map((sprint) => {
-        return (
-          <div key={sprint.id}>
-            <SprintItem sprint={sprint} upLift={upLift} />
-          </div>
-        );
+        return <SprintItem key={sprint.id} sprint={sprint} upLift={upLift} />;
       })}
     </ul>
   );

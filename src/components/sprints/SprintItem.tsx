@@ -37,7 +37,7 @@ export function SprintItem({ sprint, upLift }: SprintProps) {
   if (isNaN(numberPercent)) numberPercent = 0;
 
   return (
-    <li className="w-full border-b">
+    <li className="mt-4 w-full ">
       <div className="flex flex-row justify-between">
         <p onClick={() => upLift(id)}>{name}</p>
         <button onClick={() => deleteMutation(id)} className="text-error">

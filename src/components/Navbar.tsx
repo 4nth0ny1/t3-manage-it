@@ -11,9 +11,7 @@ export function Navbar() {
           <span className="text-[hsl(280,100%,70%)]">T3</span> Manage It
         </Link>
       </div>
-      <Link className="px-4" href="/about">
-        About
-      </Link>
+
       {sessionData ? (
         <div className="flex-none gap-2">
           <div className="dropdown-end dropdown">

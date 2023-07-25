@@ -7,6 +7,7 @@ import { BsBackspace } from "react-icons/bs";
 import { ProgressBarLine } from "../ProgressBarLine";
 import CreateTodoModal from "./CreateTodoModal";
 import toast, { Toaster } from "react-hot-toast";
+import { AiFillMinusCircle } from "react-icons/ai";
 
 type ProjectIdProps = {
   sprintId: string;
@@ -42,15 +43,13 @@ export function TodoList({ sprintId }: ProjectIdProps) {
   return (
     <>
       {openModal ? (
-        <div className="w-full text-white">
-          <div className="flex flex-row justify-end">
-            <button
-              className="btn-secondary btn w-[25%]"
-              onClick={() => setOpenModal(!openModal)}
-            >
-              Cancel
-            </button>
-          </div>
+        <div className=" text-white">
+          <button
+            className="text-3xl text-secondary"
+            onClick={() => setOpenModal(!openModal)}
+          >
+            <AiFillMinusCircle />
+          </button>
           <CreateTodoModal resetModal={resetModal} />
         </div>
       ) : (

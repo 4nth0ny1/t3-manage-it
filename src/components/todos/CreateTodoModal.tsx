@@ -73,6 +73,7 @@ export default function CreateTodoModal({ resetModal }: OpenModalProps) {
         }}
       >
         <div>
+          <h2 className=" text-center text-3xl">Create a New Todo</h2>
           <input
             type="text"
             placeholder="Name"

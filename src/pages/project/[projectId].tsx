@@ -8,11 +8,16 @@ import { SprintMenu } from "../../components/SprintMenu";
 import { TodoList } from "../../components/todos/TodoList";
 import type { Project } from "../../types";
 import type { User } from "../../types";
+import {
+  TbLayoutBottombarCollapse,
+  TbLayoutNavbarCollapse,
+} from "react-icons/tb";
 
 const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
   const [sprintId, setSprintId] = useState("");
+  const [showSideBar, setShowSideBar] = useState(true);
 
   const { data: sessionData } = useSession();
   const userId = sessionData?.user.id as string;
@@ -54,18 +59,43 @@ const SingleProjectPage: NextPage = () => {
 
   return (
     <div className="flex w-full flex-col p-8 md:flex-row">
-      <div className="flex w-full flex-col md:w-1/5">
-        <Hero
-          id={project?.id as string}
-          name={project?.name}
-          description={project?.description}
-          projectId={projectId}
-        />
-        <SprintMenu upLift={handleClick} />
-      </div>
-      <div className="min-h-screen w-full md:w-4/5 md:px-4">
-        <TodoList sprintId={sprintId} />
-      </div>
+      {showSideBar ? (
+        <>
+          <div>
+            <button
+              className=" px-4"
+              onClick={() => setShowSideBar(!showSideBar)}
+            >
+              <TbLayoutBottombarCollapse className="text-3xl" />
+            </button>
+          </div>
+          <div className="min-h-screen w-full md:px-4">
+            <TodoList sprintId={sprintId} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex w-full flex-col md:w-1/5">
+            <button
+              className="px-4 pb-4"
+              onClick={() => setShowSideBar(!showSideBar)}
+            >
+              <TbLayoutNavbarCollapse className="text-3xl" />
+            </button>
+            <Hero
+              id={project?.id as string}
+              name={project?.name}
+              description={project?.description}
+              projectId={projectId}
+            />
+            <SprintMenu upLift={handleClick} />
+          </div>
+
+          <div className="min-h-screen w-full md:w-4/5 md:px-4">
+            <TodoList sprintId={sprintId} />
+          </div>
+        </>
+      )}
     </div>
   );
 };

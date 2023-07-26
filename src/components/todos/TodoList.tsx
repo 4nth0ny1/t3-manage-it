@@ -2,8 +2,7 @@ import { api } from "../../utils/api";
 import { TodoItem } from "./TodoItem";
 import { AiFillEdit } from "react-icons/ai";
 import { useState } from "react";
-import { EditSprint } from "../sprints/EditSprint";
-import { BsBackspace } from "react-icons/bs";
+import { EditSprintModal } from "../sprints/EditSprintModal";
 import { ProgressBarLine } from "../ProgressBarLine";
 import CreateTodoModal from "./CreateTodoModal";
 import toast, { Toaster } from "react-hot-toast";
@@ -16,6 +15,7 @@ type ProjectIdProps = {
 export function TodoList({ sprintId }: ProjectIdProps) {
   const [editingSprint, setSprintEditing] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
   const { data: sprint } = api.sprint.getOneSprint.useQuery({ sprintId });
 
@@ -42,15 +42,36 @@ export function TodoList({ sprintId }: ProjectIdProps) {
 
   return (
     <>
-      {openModal ? (
-        <div className=" text-white">
-          <button
-            className="text-3xl text-secondary"
-            onClick={() => setOpenModal(!openModal)}
-          >
-            <AiFillMinusCircle />
-          </button>
-          <CreateTodoModal resetModal={resetModal} />
+      {openModal || openEditModal ? (
+        <div>
+          {openModal && (
+            <div className=" text-white">
+              <button
+                className="text-3xl text-secondary"
+                onClick={() => setOpenModal(!openModal)}
+              >
+                <AiFillMinusCircle />
+              </button>
+              <CreateTodoModal resetModal={resetModal} />
+            </div>
+          )}
+          {openEditModal && (
+            <div className=" text-white">
+              <button
+                className="text-3xl text-secondary"
+                onClick={() => setOpenEditModal(!openEditModal)}
+              >
+                <AiFillMinusCircle />
+              </button>
+              <EditSprintModal
+                id={sprint?.id as string}
+                name={sprint?.name}
+                description={sprint?.description}
+                sprintId={sprintId}
+                onSprintEdit={() => setOpenEditModal(!openEditModal)}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className="mt-6 flex flex-row flex-wrap text-2xl md:mt-0">
@@ -72,24 +93,9 @@ export function TodoList({ sprintId }: ProjectIdProps) {
                         {!editingSprint && (
                           <AiFillEdit
                             className="icon-color-edit text-2xl"
-                            onClick={() => setSprintEditing(!editingSprint)}
+                            onClick={() => setOpenEditModal(!openEditModal)}
                           />
                         )}
-                      </div>
-                    )}
-                    {editingSprint && (
-                      <div>
-                        <BsBackspace
-                          className="icon-color-delete text-2xl"
-                          onClick={() => setSprintEditing(!editingSprint)}
-                        />
-                        <EditSprint
-                          id={sprint?.id as string}
-                          name={sprint?.name}
-                          description={sprint?.description}
-                          sprintId={sprintId}
-                          onSprintEdit={() => setSprintEditing(!editingSprint)}
-                        />
                       </div>
                     )}
                   </div>
@@ -105,18 +111,10 @@ export function TodoList({ sprintId }: ProjectIdProps) {
                     >
                       Create Todo
                     </button>
-                    {/* <div className="py-4">
-                  {filteredList && <ProgressBar percentDone={numberPercent} />}
-                </div> */}
                   </div>
                 )}
               </div>
             </div>
-            {/* {filteredList && (
-              <div className="mt-4 flex flex-row justify-center">
-                <CreateTodo />
-              </div>
-            )} */}
           </div>
           {filteredList ? (
             filteredList?.map((todo) => {

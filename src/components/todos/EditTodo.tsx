@@ -16,6 +16,8 @@ export function EditTodo({ todo, onEdit }: TodoProps) {
   const { id, name, description } = todo;
   const ctx = api.useContext();
 
+  console.log(name);
+
   const [updatedName, setUpdatedName] = useState("");
   const [updatedDescription, setUpdatedDescription] = useState("");
 

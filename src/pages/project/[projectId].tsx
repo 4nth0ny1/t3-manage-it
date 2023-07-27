@@ -17,7 +17,7 @@ const SingleProjectPage: NextPage = () => {
   const router = useRouter();
   const [projectId, setProjectId] = useState("");
   const [sprintId, setSprintId] = useState("");
-  const [showSideBar, setShowSideBar] = useState(true);
+  const [showSideBar, setShowSideBar] = useState(false);
 
   const { data: sessionData } = useSession();
   const userId = sessionData?.user.id as string;

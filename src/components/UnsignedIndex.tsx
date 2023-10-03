@@ -18,11 +18,7 @@ export function UnsignedIndexPage() {
         </div>
         <AuthShowcase />
       </motion.main>
-      <div className="absolute top-96 z-0 w-full">
-        <div className="h-[75px] bg-primary"></div>
-        <div className="h-[75px] bg-accent"></div>
-        <div className="h-[75px] bg-secondary"></div>
-      </div>
+
       {/* <div className="z-10 w-[50%] py-80 text-center text-2xl text-white">
         <p>
           Manage It is a todo app that helps you stay organized with multiple

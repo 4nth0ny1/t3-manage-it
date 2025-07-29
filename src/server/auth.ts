@@ -39,13 +39,12 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+      }
+      return session; // ✅ Must return the modified session
+    },
   },
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -55,8 +54,8 @@ export const authOptions: NextAuthOptions = {
     }),
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!
-    })
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    }),
     /**
      * ...add more providers here.
      *

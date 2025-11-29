@@ -1,7 +1,5 @@
 # T3-Manage-It
 
-https://t3-manage-it.vercel.app/
-
 ## Personal project management tool, built with the T3 Stack.
 
 ### This project utilizes these technologies...
